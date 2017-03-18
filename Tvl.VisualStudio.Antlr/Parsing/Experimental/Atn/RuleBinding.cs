@@ -2,6 +2,7 @@
 {
     using System;
     using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using RuntimeHelpers = System.Runtime.CompilerServices.RuntimeHelpers;
 
     public class RuleBinding : IEquatable<RuleBinding>
@@ -24,10 +25,10 @@
 
         public RuleBinding(string name, State startState, State endState)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
-            Contract.Requires<ArgumentNullException>(startState != null, "startState");
-            Contract.Requires<ArgumentNullException>(endState != null, "endState");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(startState != null, "startState");
+            ContractSlim.Requires<ArgumentNullException>(endState != null, "endState");
 
             Contract.Ensures(!string.IsNullOrEmpty(this.Name));
             Contract.Ensures(this.StartState != null);

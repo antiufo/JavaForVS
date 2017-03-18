@@ -21,10 +21,10 @@
 
         public BraceMatchingTagger(ITextView textView, ITextBuffer sourceBuffer, IClassifier aggregator, IEnumerable<KeyValuePair<char, char>> matchingCharacters)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
-            Contract.Requires<ArgumentNullException>(sourceBuffer != null, "sourceBuffer");
-            Contract.Requires<ArgumentNullException>(aggregator != null, "aggregator");
-            Contract.Requires<ArgumentNullException>(matchingCharacters != null, "matchingCharacters");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(sourceBuffer != null, "sourceBuffer");
+            ContractSlim.Requires<ArgumentNullException>(aggregator != null, "aggregator");
+            ContractSlim.Requires<ArgumentNullException>(matchingCharacters != null, "matchingCharacters");
 
             this.TextView = textView;
             this.SourceBuffer = sourceBuffer;
@@ -73,7 +73,7 @@
 
         public IEnumerable<ITagSpan<TextMarkerTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            Contract.Requires<ArgumentNullException>(spans != null, "spans");
+            ContractSlim.Requires<ArgumentNullException>(spans != null, "spans");
 
             return Tags;
         }
@@ -85,7 +85,7 @@
 
         protected virtual bool IsClassificationTypeIgnored(IClassificationType classificationType)
         {
-            Contract.Requires<ArgumentNullException>(classificationType != null, "classificationType");
+            ContractSlim.Requires<ArgumentNullException>(classificationType != null, "classificationType");
 
             return classificationType.IsOfType(PredefinedClassificationTypeNames.Comment)
                 || classificationType.IsOfType(PredefinedClassificationTypeNames.Literal);
@@ -237,7 +237,7 @@
 
         protected virtual void OnTagsChanged(SnapshotSpanEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             var t = TagsChanged;
             if (t != null)

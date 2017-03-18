@@ -23,8 +23,8 @@
 
         public CompletionSource(ITextBuffer textBuffer, CompletionSourceProvider provider, Guid languageGuid)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(provider != null, "provider");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(provider != null, "provider");
 
             _textBuffer = textBuffer;
             _provider = provider;
@@ -93,8 +93,8 @@
 
         protected virtual Completion CreateKeywordCompletion(string keyword)
         {
-            Contract.Requires<ArgumentNullException>(keyword != null, "keyword");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(keyword));
+            ContractSlim.Requires<ArgumentNullException>(keyword != null, "keyword");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(keyword));
             Contract.Ensures(Contract.Result<Completion>() != null);
 
             string displayText = keyword;

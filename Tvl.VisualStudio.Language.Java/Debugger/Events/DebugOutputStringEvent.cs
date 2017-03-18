@@ -14,7 +14,7 @@
         public DebugOutputStringEvent(string message)
             : base(enum_EVENTATTRIBUTES.EVENT_ASYNCHRONOUS)
         {
-            Contract.Requires<ArgumentNullException>(message != null, "message");
+            ContractSlim.Requires<ArgumentNullException>(message != null, "message");
 
             _message = message;
         }

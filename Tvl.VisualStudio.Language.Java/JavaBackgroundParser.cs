@@ -16,7 +16,7 @@
         public JavaBackgroundParser(ITextBuffer textBuffer, JavaBackgroundParserProvider provider)
             : base(textBuffer, provider.BackgroundIntelliSenseTaskScheduler, provider.TextDocumentFactoryService, provider.OutputWindowService)
         {
-            Contract.Requires<ArgumentNullException>(provider != null, "provider");
+            ContractSlim.Requires<ArgumentNullException>(provider != null, "provider");
 
             _provider = provider;
         }

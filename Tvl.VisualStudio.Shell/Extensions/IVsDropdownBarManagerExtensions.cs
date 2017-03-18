@@ -11,7 +11,7 @@
     {
         public static IVsDropdownBar GetDropdownBar(this IVsDropdownBarManager dropdownBarManager)
         {
-            Contract.Requires<ArgumentNullException>(dropdownBarManager != null, "dropdownBarManager");
+            ContractSlim.Requires<ArgumentNullException>(dropdownBarManager != null, "dropdownBarManager");
 
             IVsDropdownBar dropdownBar;
             if (ErrorHandler.Failed(dropdownBarManager.GetDropdownBar(out dropdownBar)))
@@ -22,7 +22,7 @@
 
         public static IVsDropdownBarClient GetDropdownBarClient(this IVsDropdownBarManager dropdownBarManager)
         {
-            Contract.Requires<ArgumentNullException>(dropdownBarManager != null, "dropdownBarManager");
+            ContractSlim.Requires<ArgumentNullException>(dropdownBarManager != null, "dropdownBarManager");
 
             IVsDropdownBar dropdownBar = GetDropdownBar(dropdownBarManager);
             IVsDropdownBarClient client;

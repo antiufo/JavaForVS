@@ -10,8 +10,8 @@
 
         public void AddClassFilter(IReferenceType referenceType)
         {
-            Contract.Requires<ArgumentNullException>(referenceType != null, "referenceType");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(referenceType.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(referenceType != null, "referenceType");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(referenceType.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }

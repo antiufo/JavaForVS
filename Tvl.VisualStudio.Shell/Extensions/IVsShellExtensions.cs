@@ -1,7 +1,7 @@
 ﻿namespace Tvl.VisualStudio.Shell
 {
     using ArgumentNullException = System.ArgumentNullException;
-    using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using ErrorHandler = Microsoft.VisualStudio.ErrorHandler;
     using Guid = System.Guid;
     using IVsPackage = Microsoft.VisualStudio.Shell.Interop.IVsPackage;
@@ -13,7 +13,7 @@
         public static T LoadPackage<T>(this IVsShell shell)
             where T : Package
         {
-            Contract.Requires<ArgumentNullException>(shell != null, "shell");
+            ContractSlim.Requires<ArgumentNullException>(shell != null, "shell");
 
             Guid guid = typeof(T).GUID;
             IVsPackage package;

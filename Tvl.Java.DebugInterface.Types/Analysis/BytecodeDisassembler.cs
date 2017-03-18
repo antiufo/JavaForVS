@@ -11,7 +11,7 @@
     {
         public static DisassembledMethod Disassemble(byte[] bytecode)
         {
-            Contract.Requires<ArgumentNullException>(bytecode != null, "bytecode");
+            ContractSlim.Requires<ArgumentNullException>(bytecode != null, "bytecode");
 
             List<JavaInstruction> instructions = new List<JavaInstruction>();
             List<SwitchData> switchData = new List<SwitchData>();
@@ -140,9 +140,9 @@
 
         public static ImmutableList<int?> GetEvaluationStackDepths(DisassembledMethod disassembledMethod, ReadOnlyCollection<ConstantPoolEntry> constantPool, ReadOnlyCollection<ExceptionTableEntry> exceptionTable)
         {
-            Contract.Requires<ArgumentNullException>(disassembledMethod != null, "disassembledMethod");
-            Contract.Requires<ArgumentNullException>(constantPool != null, "constantPool");
-            Contract.Requires<ArgumentNullException>(exceptionTable != null, "exceptionTable");
+            ContractSlim.Requires<ArgumentNullException>(disassembledMethod != null, "disassembledMethod");
+            ContractSlim.Requires<ArgumentNullException>(constantPool != null, "constantPool");
+            ContractSlim.Requires<ArgumentNullException>(exceptionTable != null, "exceptionTable");
 
             Contract.Ensures(Contract.Result<ImmutableList<int?>>() != null);
             Contract.Ensures(Contract.Result<ImmutableList<int?>>().Count == disassembledMethod.Instructions.Count);

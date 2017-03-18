@@ -10,16 +10,16 @@
 
         public void AddClassExclusionFilter(string classPattern)
         {
-            Contract.Requires<ArgumentNullException>(classPattern != null, "classPattern");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(classPattern));
+            ContractSlim.Requires<ArgumentNullException>(classPattern != null, "classPattern");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(classPattern));
 
             throw new NotImplementedException();
         }
 
         public void AddClassFilter(string classPattern)
         {
-            Contract.Requires<ArgumentNullException>(classPattern != null, "classPattern");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(classPattern));
+            ContractSlim.Requires<ArgumentNullException>(classPattern != null, "classPattern");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(classPattern));
 
             throw new NotImplementedException();
         }

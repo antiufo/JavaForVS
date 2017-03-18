@@ -14,7 +14,7 @@
         public DebugProcessContinueEvent(enum_EVENTATTRIBUTES attributes, IDebugProcess2 process)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(process != null, "process");
+            ContractSlim.Requires<ArgumentNullException>(process != null, "process");
             _process = process;
         }
 

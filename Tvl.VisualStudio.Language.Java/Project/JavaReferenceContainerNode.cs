@@ -23,7 +23,7 @@
         public JavaReferenceContainerNode(JavaProjectNode root)
             : base(root)
         {
-            Contract.Requires<ArgumentNullException>(root != null, "root");
+            ContractSlim.Requires<ArgumentNullException>(root != null, "root");
         }
 
         protected override ReadOnlyCollection<string> SupportedReferenceTypes

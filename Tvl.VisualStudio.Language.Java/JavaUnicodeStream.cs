@@ -13,7 +13,7 @@
 
         public JavaUnicodeStream(ICharStream source)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
+            ContractSlim.Requires<ArgumentNullException>(source != null, "source");
 
             _source = source;
         }

@@ -26,7 +26,7 @@
 
         public JavaDebugDocumentContext(ILocation location)
         {
-            Contract.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
             _location = location;
         }
 

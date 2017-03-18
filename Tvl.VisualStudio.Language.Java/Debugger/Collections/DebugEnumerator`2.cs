@@ -13,7 +13,7 @@
 
         public DebugEnumerator(IEnumerable<TElement> elements)
         {
-            Contract.Requires<ArgumentNullException>(elements != null, "elements");
+            ContractSlim.Requires<ArgumentNullException>(elements != null, "elements");
             _elements = elements.ToArray();
         }
 

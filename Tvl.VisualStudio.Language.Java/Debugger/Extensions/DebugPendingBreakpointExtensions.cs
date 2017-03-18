@@ -11,7 +11,7 @@
     {
         public static enum_PENDING_BP_STATE GetState(this IDebugPendingBreakpoint2 breakpoint)
         {
-            Contract.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
+            ContractSlim.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
 
             PENDING_BP_STATE_INFO[] state = new PENDING_BP_STATE_INFO[1];
             ErrorHandler.ThrowOnFailure(breakpoint.GetState(state));
@@ -20,7 +20,7 @@
 
         public static bool IsVirtualized(this IDebugPendingBreakpoint2 breakpoint)
         {
-            Contract.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
+            ContractSlim.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
 
             PENDING_BP_STATE_INFO[] state = new PENDING_BP_STATE_INFO[1];
             ErrorHandler.ThrowOnFailure(breakpoint.GetState(state));
@@ -29,7 +29,7 @@
 
         public static IEnumerable<IDebugBoundBreakpoint2> EnumBoundBreakpoints(this IDebugPendingBreakpoint2 breakpoint)
         {
-            Contract.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
+            ContractSlim.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
 
             IEnumDebugBoundBreakpoints2 boundBreakpoints;
             ErrorHandler.ThrowOnFailure(breakpoint.EnumBoundBreakpoints(out boundBreakpoints));

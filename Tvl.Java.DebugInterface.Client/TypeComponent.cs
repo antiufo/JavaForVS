@@ -15,7 +15,7 @@
             : base(virtualMachine)
         {
             Contract.Requires(virtualMachine != null);
-            Contract.Requires<ArgumentNullException>(declaringType != null, "declaringType");
+            ContractSlim.Requires<ArgumentNullException>(declaringType != null, "declaringType");
 
             _declaringType = declaringType;
             _name = name;

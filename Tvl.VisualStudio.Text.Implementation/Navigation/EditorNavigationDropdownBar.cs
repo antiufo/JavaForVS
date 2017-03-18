@@ -54,11 +54,11 @@
 
         public EditorNavigationDropdownBar(IVsCodeWindow codeWindow, IVsEditorAdaptersFactoryService editorAdaptersFactory, IEnumerable<IEditorNavigationSource> sources, IBufferGraphFactoryService bufferGraphFactoryService, IJavaEditorNavigationTypeRegistryService editorNavigationTypeRegistryService)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
-            Contract.Requires<ArgumentNullException>(editorAdaptersFactory != null, "editorAdaptersFactory");
-            Contract.Requires<ArgumentNullException>(sources != null, "sources");
-            Contract.Requires<ArgumentNullException>(bufferGraphFactoryService != null, "bufferGraphFactoryService");
-            Contract.Requires<ArgumentNullException>(editorNavigationTypeRegistryService != null, "editorNavigationTypeRegistryService");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(editorAdaptersFactory != null, "editorAdaptersFactory");
+            ContractSlim.Requires<ArgumentNullException>(sources != null, "sources");
+            ContractSlim.Requires<ArgumentNullException>(bufferGraphFactoryService != null, "bufferGraphFactoryService");
+            ContractSlim.Requires<ArgumentNullException>(editorNavigationTypeRegistryService != null, "editorNavigationTypeRegistryService");
 
             this._codeWindow = codeWindow;
             this._editorAdaptersFactory = editorAdaptersFactory;
@@ -521,7 +521,7 @@
 
         private void UpdateNavigationTargets(IEditorNavigationSource source)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
+            ContractSlim.Requires<ArgumentNullException>(source != null, "source");
 
             lock (this)
             {
@@ -547,7 +547,7 @@
 
         private void UpdateNavigationTargets(IEnumerable<IEditorNavigationTarget> targets)
         {
-            Contract.Requires<ArgumentNullException>(targets != null, "targets");
+            ContractSlim.Requires<ArgumentNullException>(targets != null, "targets");
 
             foreach (var control in _navigationControls)
             {

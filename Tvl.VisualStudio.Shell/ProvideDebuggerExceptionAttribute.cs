@@ -2,6 +2,7 @@
 {
     using System;
     using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using enum_EXCEPTION_STATE = Microsoft.VisualStudio.Debugger.Interop.enum_EXCEPTION_STATE;
     using RegistrationAttribute = Microsoft.VisualStudio.Shell.RegistrationAttribute;
     using VSConstants = Microsoft.VisualStudio.VSConstants;
@@ -33,9 +34,9 @@
 
         public ProvideDebuggerExceptionAttribute(string debugEngineGuid, string exceptionKind, string exceptionNamespace, string exceptionName)
         {
-            Contract.Requires<ArgumentNullException>(debugEngineGuid != null, "debugEngineGuid");
-            Contract.Requires<ArgumentNullException>(exceptionKind != null, "exceptionKind");
-            Contract.Requires<ArgumentNullException>(exceptionName != null, "exceptionName");
+            ContractSlim.Requires<ArgumentNullException>(debugEngineGuid != null, "debugEngineGuid");
+            ContractSlim.Requires<ArgumentNullException>(exceptionKind != null, "exceptionKind");
+            ContractSlim.Requires<ArgumentNullException>(exceptionName != null, "exceptionName");
 
             _debugEngine = Guid.Parse(debugEngineGuid);
             _exceptionKind = exceptionKind;

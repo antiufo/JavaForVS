@@ -11,13 +11,13 @@
         public ImmutableList(IEnumerable<T> collection)
             : base(GetImmutableList(collection))
         {
-            Contract.Requires<ArgumentNullException>(collection != null, "collection");
+            ContractSlim.Requires<ArgumentNullException>(collection != null, "collection");
         }
 
         public ImmutableList(ImmutableList<T> collection)
             : base(collection.Items)
         {
-            Contract.Requires<ArgumentNullException>(collection != null, "collection");
+            ContractSlim.Requires<ArgumentNullException>(collection != null, "collection");
         }
 
         private static IList<T> GetImmutableList(IEnumerable<T> collection)

@@ -11,7 +11,7 @@
     {
         public static SVsServiceProvider AsVsServiceProvider(this IServiceProvider sp)
         {
-            Contract.Requires<ArgumentNullException>(sp != null, "sp");
+            ContractSlim.Requires<ArgumentNullException>(sp != null, "sp");
             Contract.Ensures(Contract.Result<SVsServiceProvider>() != null);
 
             return new VsServiceProviderWrapper(sp);
@@ -26,14 +26,14 @@
 
         public static TServiceInterface GetService<TServiceClass, TServiceInterface>(this IServiceProvider sp)
         {
-            Contract.Requires<ArgumentNullException>(sp != null, "sp");
+            ContractSlim.Requires<ArgumentNullException>(sp != null, "sp");
 
             return (TServiceInterface)sp.GetService(typeof(TServiceClass));
         }
 
         public static IOleServiceProvider TryGetOleServiceProvider(this IServiceProvider sp)
         {
-            Contract.Requires<ArgumentNullException>(sp != null, "sp");
+            ContractSlim.Requires<ArgumentNullException>(sp != null, "sp");
 
             return (IOleServiceProvider)sp.GetService(typeof(IOleServiceProvider));
         }
@@ -41,7 +41,7 @@
         public static TServiceInterface TryGetGlobalService<TServiceClass, TServiceInterface>(this IOleServiceProvider sp)
             where TServiceInterface : class
         {
-            Contract.Requires<ArgumentNullException>(sp != null, "sp");
+            ContractSlim.Requires<ArgumentNullException>(sp != null, "sp");
 
             Guid guidService = typeof(TServiceClass).GUID;
             Guid riid = typeof(TServiceClass).GUID;

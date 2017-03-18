@@ -16,7 +16,7 @@
 
         public WeakEventHandler(EventHandler<TEventArgs> handler, Action<EventHandler<TEventArgs>> unregister)
         {
-            Contract.Requires<ArgumentNullException>(handler != null, "handler");
+            ContractSlim.Requires<ArgumentNullException>(handler != null, "handler");
 
             _target = new WeakReference(handler.Target);
             _openHandler = (OpenEventHandler)Delegate.CreateDelegate(typeof(OpenEventHandler), null, handler.Method);

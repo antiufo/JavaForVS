@@ -9,8 +9,8 @@
         public CodeFileBuilder(string fileName)
             : base(fileName)
         {
-            Contract.Requires<ArgumentNullException>(fileName != null, "fileName");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(fileName));
+            ContractSlim.Requires<ArgumentNullException>(fileName != null, "fileName");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(fileName));
         }
 
         // adds a "package x...;" statement

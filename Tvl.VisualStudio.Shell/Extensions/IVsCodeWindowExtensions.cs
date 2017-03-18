@@ -9,7 +9,7 @@
     {
         public static IVsTextLines GetBuffer(this IVsCodeWindow codeWindow)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             IVsTextLines buffer;
             ErrorHandler.ThrowOnFailure(codeWindow.GetBuffer(out buffer));
@@ -18,7 +18,7 @@
 
         public static string GetEditorCaption(this IVsCodeWindow codeWindow, READONLYSTATUS status)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             string caption;
             if (ErrorHandler.Failed(codeWindow.GetEditorCaption(status, out caption)))
@@ -29,7 +29,7 @@
 
         public static IVsTextView GetLastActiveView(this IVsCodeWindow codeWindow)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             IVsTextView view;
             if (ErrorHandler.Failed(codeWindow.GetLastActiveView(out view)))
@@ -40,7 +40,7 @@
 
         public static IVsTextView GetPrimaryView(this IVsCodeWindow codeWindow)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             IVsTextView view;
             if (ErrorHandler.Failed(codeWindow.GetPrimaryView(out view)))
@@ -51,7 +51,7 @@
 
         public static IVsTextView GetSecondaryView(this IVsCodeWindow codeWindow)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             IVsTextView view;
             if (ErrorHandler.Failed(codeWindow.GetSecondaryView(out view)))
@@ -62,7 +62,7 @@
 
         public static Guid GetViewClassID(this IVsCodeWindow codeWindow)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             Guid classID;
             ErrorHandler.ThrowOnFailure(codeWindow.GetViewClassID(out classID));
@@ -71,7 +71,7 @@
 
         public static bool IsReadOnly(this IVsCodeWindow codeWindow)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
 
             IVsCodeWindowEx codeWindowEx = codeWindow as IVsCodeWindowEx;
             if (codeWindowEx == null)

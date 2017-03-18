@@ -22,16 +22,16 @@
 
         public bool GetIsVisible(IStackFrame frame)
         {
-            Contract.Requires<ArgumentNullException>(frame != null, "frame");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(frame.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(frame != null, "frame");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(frame.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }
 
         public bool GetIsVisible(ILocation location)
         {
-            Contract.Requires<ArgumentNullException>(location != null, "location");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(location.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(location.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }

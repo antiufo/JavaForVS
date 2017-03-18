@@ -46,8 +46,8 @@
 
             set
             {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
-                Contract.Requires<ArgumentException>(Contract.ForAll(value, i => !string.IsNullOrEmpty(i)));
+                ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+                ContractSlim.Requires<ArgumentException>(Contract.ForAll(value, i => !string.IsNullOrEmpty(i)));
 
                 if (_availableTargetVirtualMachines.SequenceEqual(value, StringComparer.CurrentCulture))
                     return;
@@ -69,8 +69,8 @@
 
             set
             {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
-                Contract.Requires<ArgumentException>(Contract.ForAll(value, i => !string.IsNullOrEmpty(i)));
+                ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+                ContractSlim.Requires<ArgumentException>(Contract.ForAll(value, i => !string.IsNullOrEmpty(i)));
 
                 if (_availableOutputTypes.SequenceEqual(value, StringComparer.CurrentCulture))
                     return;
@@ -92,8 +92,8 @@
 
             set
             {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
-                Contract.Requires<ArgumentException>(Contract.ForAll(value, i => i != null));
+                ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+                ContractSlim.Requires<ArgumentException>(Contract.ForAll(value, i => i != null));
 
                 if (_availableStartupObjects.SequenceEqual(value, StringComparer.CurrentCulture))
                     return;
@@ -131,7 +131,7 @@
 
             set
             {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
+                ContractSlim.Requires<ArgumentNullException>(value != null, "value");
 
                 cmbTargetVirtualMachine.SelectedItem = value;
             }
@@ -155,7 +155,7 @@
 
             set
             {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
+                ContractSlim.Requires<ArgumentNullException>(value != null, "value");
 
                 string outputType = value;
                 if (outputType == JavaProjectFileConstants.JavaArchiveOutputType)
@@ -183,7 +183,7 @@
 
             set
             {
-                Contract.Requires<ArgumentNullException>(value != null, "value");
+                ContractSlim.Requires<ArgumentNullException>(value != null, "value");
 
                 string startupObject = value;
                 if (string.IsNullOrEmpty(startupObject))

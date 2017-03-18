@@ -10,8 +10,8 @@
         public UnknownAttributeInfo(string name, ushort attributeNameIndex, byte[] info)
             : base(attributeNameIndex, info)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             _name = name;
         }

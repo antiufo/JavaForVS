@@ -603,7 +603,7 @@
 
             public ArrayTokenSource(IEnumerable<IToken> tokens)
             {
-                Contract.Requires<ArgumentNullException>(tokens != null, "tokens");
+                ContractSlim.Requires<ArgumentNullException>(tokens != null, "tokens");
 
                 _tokens = tokens;
                 _tokenEnumerator = tokens.GetEnumerator();
@@ -611,7 +611,7 @@
 
             public ArrayTokenSource(params IToken[] tokens)
             {
-                Contract.Requires<ArgumentNullException>(tokens != null, "tokens");
+                ContractSlim.Requires<ArgumentNullException>(tokens != null, "tokens");
 
                 _tokens = tokens;
                 _tokenEnumerator = _tokens.GetEnumerator();
@@ -619,7 +619,7 @@
 
             public ArrayTokenSource(params int[] tokens)
             {
-                Contract.Requires<ArgumentNullException>(tokens != null, "tokens");
+                ContractSlim.Requires<ArgumentNullException>(tokens != null, "tokens");
 
                 _tokens = tokens.Select(
                     (tokenType, index) => new CommonToken(tokenType)

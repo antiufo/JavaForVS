@@ -22,7 +22,7 @@
 
         public JavaClassifierLexer(ICharStream input, JavaClassifierLexerState state)
         {
-            Contract.Requires<ArgumentNullException>(input != null, "input");
+            ContractSlim.Requires<ArgumentNullException>(input != null, "input");
 
             _input = input;
             _languageLexer = new JavaColorizerLexer(input, this);

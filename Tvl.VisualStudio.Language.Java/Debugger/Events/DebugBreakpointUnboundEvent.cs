@@ -15,7 +15,7 @@
         public DebugBreakpointUnboundEvent(enum_EVENTATTRIBUTES attributes, IDebugBoundBreakpoint2 breakpoint, enum_BP_UNBOUND_REASON reason)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
+            ContractSlim.Requires<ArgumentNullException>(breakpoint != null, "breakpoint");
 
             _breakpoint = breakpoint;
             _reason = reason;

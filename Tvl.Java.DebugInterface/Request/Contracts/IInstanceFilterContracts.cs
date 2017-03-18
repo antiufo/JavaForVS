@@ -10,8 +10,8 @@
 
         public void AddInstanceFilter(IObjectReference instance)
         {
-            Contract.Requires<ArgumentNullException>(instance != null, "instance");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(instance.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(instance != null, "instance");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(instance.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }

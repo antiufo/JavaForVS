@@ -9,7 +9,7 @@
     {
         public static unsafe string GetString(byte* data)
         {
-            Contract.Requires<ArgumentNullException>(data != null, "data");
+            ContractSlim.Requires<ArgumentNullException>(data != null, "data");
 
             StringBuilder builder = new StringBuilder();
             for (byte* ptr = data; *ptr != 0; ptr++)
@@ -52,8 +52,8 @@
 
         public static unsafe string GetString(byte* data, int count)
         {
-            Contract.Requires<ArgumentNullException>(data != null, "data");
-            Contract.Requires<ArgumentOutOfRangeException>(count >= 0);
+            ContractSlim.Requires<ArgumentNullException>(data != null, "data");
+            ContractSlim.Requires<ArgumentOutOfRangeException>(count >= 0);
 
             StringBuilder builder = new StringBuilder();
             for (byte* ptr = data; ptr < data + count; ptr++)
@@ -96,9 +96,9 @@
 
         public static string GetString(byte[] bytes, int index, int count)
         {
-            Contract.Requires<ArgumentNullException>(bytes != null, "bytes");
-            Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-            Contract.Requires<ArgumentOutOfRangeException>(count >= 0);
+            ContractSlim.Requires<ArgumentNullException>(bytes != null, "bytes");
+            ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(count >= 0);
 
             StringBuilder builder = new StringBuilder();
             for (int i = index; i < index + count; i++)

@@ -10,7 +10,7 @@
     {
         private static IEnumerable<VsUIPropertyDescriptor> GetProperties(IVsUIDataSource dataSource)
         {
-            Contract.Requires<ArgumentNullException>(dataSource != null, "dataSource");
+            ContractSlim.Requires<ArgumentNullException>(dataSource != null, "dataSource");
             Contract.Ensures(Contract.Result<IEnumerable<VsUIPropertyDescriptor>>() != null);
 
             IVsUIEnumDataSourceProperties verbs;
@@ -33,7 +33,7 @@
 
         private static IEnumerable<string> GetVerbs(IVsUIDataSource dataSource)
         {
-            Contract.Requires<ArgumentNullException>(dataSource != null, "dataSource");
+            ContractSlim.Requires<ArgumentNullException>(dataSource != null, "dataSource");
             Contract.Ensures(Contract.Result<IEnumerable<string>>() != null);
 
             IVsUIEnumDataSourceVerbs verbs;

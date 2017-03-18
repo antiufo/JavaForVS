@@ -140,9 +140,9 @@
 
         internal jvmtiError GetExceptionTable(long classLoaderTag, string classSignature, string methodName, string methodSignature, out ReadOnlyCollection<ExceptionTableEntry> exceptionTable)
         {
-            Contract.Requires<ArgumentNullException>(classSignature != null, "classSignature");
-            Contract.Requires<ArgumentNullException>(methodName != null, "methodName");
-            Contract.Requires<ArgumentNullException>(methodSignature != null, "methodSignature");
+            ContractSlim.Requires<ArgumentNullException>(classSignature != null, "classSignature");
+            ContractSlim.Requires<ArgumentNullException>(methodName != null, "methodName");
+            ContractSlim.Requires<ArgumentNullException>(methodSignature != null, "methodSignature");
 
             exceptionTable = null;
             lock (_exceptionTableEntries)
@@ -283,9 +283,9 @@
 
         public void PushDispatcherFrame(DispatcherFrame frame, jvmtiEnvHandle environment, IAsyncResult asyncResult)
         {
-            Contract.Requires<ArgumentNullException>(frame != null, "frame");
-            Contract.Requires<ArgumentNullException>(environment != null, "environment");
-            Contract.Requires<ArgumentNullException>(asyncResult != null, "asyncResult");
+            ContractSlim.Requires<ArgumentNullException>(frame != null, "frame");
+            ContractSlim.Requires<ArgumentNullException>(environment != null, "environment");
+            ContractSlim.Requires<ArgumentNullException>(asyncResult != null, "asyncResult");
 
             lock (_dispatchers)
             {
@@ -297,8 +297,8 @@
 
         public void PushAgentDispatcherFrame(DispatcherFrame frame, jvmtiEnvHandle environment)
         {
-            Contract.Requires<ArgumentNullException>(frame != null, "frame");
-            Contract.Requires<ArgumentNullException>(environment != null, "environment");
+            ContractSlim.Requires<ArgumentNullException>(frame != null, "frame");
+            ContractSlim.Requires<ArgumentNullException>(environment != null, "environment");
 
             lock (_dispatchers)
             {
@@ -310,7 +310,7 @@
 
         public void InvokeOnJvmThread(Action<jvmtiEnvHandle> action)
         {
-            Contract.Requires<ArgumentNullException>(action != null, "action");
+            ContractSlim.Requires<ArgumentNullException>(action != null, "action");
 
             DispatcherOperation operationResult;
             lock (_dispatchers)

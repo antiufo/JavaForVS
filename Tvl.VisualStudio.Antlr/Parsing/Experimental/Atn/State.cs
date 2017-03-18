@@ -407,8 +407,8 @@
 
         public void Optimize(StateOptimizer optimizer)
         {
-            Contract.Requires<ArgumentNullException>(optimizer != null, "optimizer");
-            Contract.Requires<InvalidOperationException>(IsRecursiveAnalysisComplete);
+            ContractSlim.Requires<ArgumentNullException>(optimizer != null, "optimizer");
+            ContractSlim.Requires<InvalidOperationException>(IsRecursiveAnalysisComplete);
 
             if (IsOptimized)
                 return;
@@ -713,19 +713,19 @@
 
         public void AddTransition(Transition transition, StateOptimizer optimizer = null)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
-            Contract.Requires<InvalidOperationException>(transition.SourceState == null);
-            Contract.Requires<InvalidOperationException>(!OutgoingTransitions.Contains(transition));
-            Contract.Requires<InvalidOperationException>(!transition.TargetState.IncomingTransitions.Contains(transition));
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<InvalidOperationException>(transition.SourceState == null);
+            ContractSlim.Requires<InvalidOperationException>(!OutgoingTransitions.Contains(transition));
+            ContractSlim.Requires<InvalidOperationException>(!transition.TargetState.IncomingTransitions.Contains(transition));
 
             AddTransitionInternal(transition, optimizer);
         }
 
         public void RemoveTransition(Transition transition, StateOptimizer optimizer = null)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
-            Contract.Requires<ArgumentException>(transition.SourceState == this);
-            Contract.Requires<InvalidOperationException>(OutgoingTransitions.Contains(transition));
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentException>(transition.SourceState == this);
+            ContractSlim.Requires<InvalidOperationException>(OutgoingTransitions.Contains(transition));
 
             Contract.Ensures(transition.SourceState == null);
             Contract.Ensures(!Contract.OldValue(transition.SourceState).OutgoingTransitions.Contains(transition));

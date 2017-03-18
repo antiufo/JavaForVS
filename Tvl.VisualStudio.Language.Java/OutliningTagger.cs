@@ -17,8 +17,8 @@
 
         public OutliningTagger(ITextBuffer textBuffer, IBackgroundParser backgroundParser)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(backgroundParser != null, "backgroundParser");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(backgroundParser != null, "backgroundParser");
 
             this.TextBuffer = textBuffer;
             this.BackgroundParser = backgroundParser;

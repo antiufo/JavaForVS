@@ -14,7 +14,7 @@
 
         public BreakpointLocationCodeAddress(BP_LOCATION location, bool releaseComObjects)
         {
-            Contract.Requires<ArgumentException>((enum_BP_LOCATION_TYPE)location.bpLocationType == enum_BP_LOCATION_TYPE.BPLT_CODE_ADDRESS);
+            ContractSlim.Requires<ArgumentException>((enum_BP_LOCATION_TYPE)location.bpLocationType == enum_BP_LOCATION_TYPE.BPLT_CODE_ADDRESS);
 
             try
             {

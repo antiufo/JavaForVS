@@ -13,6 +13,7 @@
 
     using CancellationToken = System.Threading.CancellationToken;
     using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using IOutputWindowPane = Tvl.VisualStudio.OutputWindow.Interfaces.IOutputWindowPane;
     using IQuickInfoSession = Microsoft.VisualStudio.Language.Intellisense.IQuickInfoSession;
     using IQuickInfoSource = Microsoft.VisualStudio.Language.Intellisense.IQuickInfoSource;
@@ -39,8 +40,8 @@
 
         public JavaQuickInfoSource(ITextBuffer textBuffer, JavaQuickInfoSourceProvider provider)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(provider != null, "provider");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(provider != null, "provider");
 
             _textBuffer = textBuffer;
             _provider = provider;

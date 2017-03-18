@@ -46,8 +46,8 @@
 
         public AntlrTaggerBase(ITextBuffer textBuffer, IEqualityComparer<TState> stateComparer, ClassifierOptions options)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(stateComparer != null, "stateComparer");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(stateComparer != null, "stateComparer");
 
             _textBuffer = textBuffer;
             _stateComparer = stateComparer;
@@ -361,8 +361,8 @@
 
         protected virtual IEnumerable<ITagSpan<TTag>> GetTagSpansForToken(IToken token, ITextSnapshot snapshot)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
-            Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
             Contract.Ensures(Contract.Result<IEnumerable<ITagSpan<TTag>>>() != null);
 
             TTag tag;
@@ -377,14 +377,14 @@
 
         protected virtual bool TryTagToken(IToken token, out TTag tag)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
             tag = default(TTag);
             return false;
         }
 
         protected virtual void OnTagsChanged(SnapshotSpanEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             var t = TagsChanged;
             if (t != null)
@@ -393,7 +393,7 @@
 
         protected virtual bool IsMultilineTagSpan(ITagSpan<TTag> span)
         {
-            Contract.Requires<ArgumentNullException>(span != null, "span");
+            ContractSlim.Requires<ArgumentNullException>(span != null, "span");
             if (span.Span.IsEmpty)
                 return false;
 
@@ -582,7 +582,7 @@
 
             public TaggerState(ITextSnapshot snapshot)
             {
-                Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+                ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
                 _lineStatesVersion = snapshot.Version;
                 _lineStates = new LineStateInfo[snapshot.LineCount];
                 for (int i = 0; i < _lineStates.Length; i++)

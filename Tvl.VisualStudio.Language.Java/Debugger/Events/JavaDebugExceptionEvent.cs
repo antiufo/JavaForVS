@@ -21,9 +21,9 @@
         public JavaDebugExceptionEvent(enum_EVENTATTRIBUTES attributes, JavaDebugProgram program, IThreadReference thread, IObjectReference exceptionObject, ILocation location, ILocation catchLocation)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(program != null, "program");
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
-            Contract.Requires<ArgumentNullException>(exceptionObject != null, "exceptionObject");
+            ContractSlim.Requires<ArgumentNullException>(program != null, "program");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(exceptionObject != null, "exceptionObject");
 
             _program = program;
             _thread = thread;

@@ -113,7 +113,7 @@
 
         internal virtual void AddChild(CodeElement child)
         {
-            Contract.Requires<InvalidOperationException>(!IsFrozen);
+            ContractSlim.Requires<InvalidOperationException>(!IsFrozen);
             Contract.Requires(child != null);
 
             _children.Add(child);

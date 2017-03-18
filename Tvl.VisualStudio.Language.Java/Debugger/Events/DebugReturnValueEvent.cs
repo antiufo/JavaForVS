@@ -14,7 +14,7 @@
         public DebugReturnValueEvent(enum_EVENTATTRIBUTES attributes, IDebugProperty2 returnValue)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(returnValue != null, "returnValue");
+            ContractSlim.Requires<ArgumentNullException>(returnValue != null, "returnValue");
 
             _returnValue = returnValue;
         }

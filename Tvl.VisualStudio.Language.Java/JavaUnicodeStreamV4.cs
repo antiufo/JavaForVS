@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using ICharStream = Antlr4.Runtime.ICharStream;
     using Interval = Antlr4.Runtime.Misc.Interval;
 
@@ -19,7 +20,7 @@
 
         public JavaUnicodeStreamV4(ICharStream source)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
+            ContractSlim.Requires<ArgumentNullException>(source != null, "source");
 
             _source = source;
         }

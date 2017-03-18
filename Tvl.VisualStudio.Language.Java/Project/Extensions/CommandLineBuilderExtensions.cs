@@ -8,9 +8,9 @@
     {
         public static void AppendSwitchIfNotNullOrEmpty(this CommandLineBuilder commandLine, string switchName, string parameter)
         {
-            Contract.Requires<ArgumentNullException>(commandLine != null, "commandLine");
-            Contract.Requires<ArgumentNullException>(switchName != null, "switchName");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(switchName));
+            ContractSlim.Requires<ArgumentNullException>(commandLine != null, "commandLine");
+            ContractSlim.Requires<ArgumentNullException>(switchName != null, "switchName");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(switchName));
 
             if (!string.IsNullOrEmpty(parameter))
                 commandLine.AppendSwitchIfNotNull(switchName, parameter);

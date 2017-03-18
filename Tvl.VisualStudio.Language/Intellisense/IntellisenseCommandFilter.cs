@@ -28,7 +28,7 @@
             : base(textViewAdapter)
         {
             Contract.Requires(textViewAdapter != null);
-            Contract.Requires<ArgumentNullException>(controller != null, "controller");
+            ContractSlim.Requires<ArgumentNullException>(controller != null, "controller");
 
             _controller = controller;
         }

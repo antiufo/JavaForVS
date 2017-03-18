@@ -7,6 +7,7 @@
     using Microsoft.VisualStudio.Text;
     using Microsoft.VisualStudio.Text.Classification;
 
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using Contract = System.Diagnostics.Contracts.Contract;
 
     public abstract class AntlrClassifierBase : IClassifier
@@ -22,7 +23,7 @@
 
         public AntlrClassifierBase(ITextBuffer textBuffer)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
 
             _textBuffer = textBuffer;
 
@@ -266,8 +267,8 @@
 
         protected virtual IEnumerable<ClassificationSpan> GetClassificationSpansForToken(IToken token, ITextSnapshot snapshot)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
-            Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
             Contract.Ensures(Contract.Result<IEnumerable<ClassificationSpan>>() != null);
 
             var classification = ClassifyToken(token);
@@ -282,13 +283,13 @@
 
         protected virtual IClassificationType ClassifyToken(IToken token)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
             return null;
         }
 
         protected virtual void OnClassificationChanged(ClassificationChangedEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             var t = ClassificationChanged;
             if (t != null)
@@ -297,7 +298,7 @@
 
         private static bool IsMultilineClassificationSpan(ClassificationSpan span)
         {
-            Contract.Requires<ArgumentNullException>(span != null, "span");
+            ContractSlim.Requires<ArgumentNullException>(span != null, "span");
 
             if (span.Span.IsEmpty)
                 return false;

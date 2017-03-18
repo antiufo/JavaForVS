@@ -47,10 +47,10 @@
 
         public BackgroundParser(ITextBuffer textBuffer, TaskScheduler taskScheduler, ITextDocumentFactoryService textDocumentFactoryService, IOutputWindowService outputWindowService, string outputPaneName)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(taskScheduler != null, "taskScheduler");
-            Contract.Requires<ArgumentNullException>(textDocumentFactoryService != null, "textDocumentFactoryService");
-            Contract.Requires<ArgumentNullException>(outputWindowService != null, "outputWindowService");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(taskScheduler != null, "taskScheduler");
+            ContractSlim.Requires<ArgumentNullException>(textDocumentFactoryService != null, "textDocumentFactoryService");
+            ContractSlim.Requires<ArgumentNullException>(outputWindowService != null, "outputWindowService");
 
             this._textBuffer = new WeakReference<ITextBuffer>(textBuffer);
             this._taskScheduler = taskScheduler;
@@ -171,7 +171,7 @@
 
         protected virtual void OnParseComplete(ParseResultEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             var t = ParseComplete;
             if (t != null)

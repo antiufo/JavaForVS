@@ -12,7 +12,7 @@
         internal MethodExitEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request, ThreadReference thread, Location location, IValue returnValue)
             : base(virtualMachine, suspendPolicy, request, thread, location)
         {
-            Contract.Requires<ArgumentNullException>(returnValue != null, "returnValue");
+            ContractSlim.Requires<ArgumentNullException>(returnValue != null, "returnValue");
 
             _returnValue = returnValue;
         }

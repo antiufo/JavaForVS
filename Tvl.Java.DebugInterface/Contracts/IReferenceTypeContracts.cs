@@ -33,8 +33,8 @@
 
         public ReadOnlyCollection<ILocation> GetLineLocations(string stratum, string sourceName)
         {
-            Contract.Requires<ArgumentException>(stratum == null || !string.IsNullOrEmpty(stratum));
-            Contract.Requires<ArgumentException>(sourceName == null || !string.IsNullOrEmpty(sourceName));
+            ContractSlim.Requires<ArgumentException>(stratum == null || !string.IsNullOrEmpty(stratum));
+            ContractSlim.Requires<ArgumentException>(sourceName == null || !string.IsNullOrEmpty(sourceName));
             Contract.Ensures(Contract.Result<ReadOnlyCollection<ILocation>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<ILocation>>(), location => location != null && this.GetVirtualMachine().Equals(location.GetVirtualMachine())));
@@ -110,8 +110,8 @@
 
         public IField GetFieldByName(string fieldName)
         {
-            Contract.Requires<ArgumentNullException>(fieldName != null, "fieldName");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(fieldName));
+            ContractSlim.Requires<ArgumentNullException>(fieldName != null, "fieldName");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(fieldName));
             Contract.Ensures(Contract.Result<IField>() == null || this.GetVirtualMachine().Equals(Contract.Result<IField>().GetVirtualMachine()));
 
             throw new NotImplementedException();
@@ -124,8 +124,8 @@
 
         public IValue GetValue(IField field)
         {
-            Contract.Requires<ArgumentNullException>(field != null, "field");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(field != null, "field");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IValue>() == null || this.GetVirtualMachine().Equals(Contract.Result<IValue>().GetVirtualMachine()));
 
             throw new NotImplementedException();
@@ -133,9 +133,9 @@
 
         public IDictionary<IField, IValue> GetValues(IEnumerable<IField> fields)
         {
-            Contract.Requires<ArgumentNullException>(fields != null, "fields");
+            ContractSlim.Requires<ArgumentNullException>(fields != null, "fields");
 #if CONTRACTS_FORALL
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(fields, field => this.GetVirtualMachine().Equals(field.GetVirtualMachine())));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(fields, field => this.GetVirtualMachine().Equals(field.GetVirtualMachine())));
 #endif
             Contract.Ensures(Contract.Result<IDictionary<IField, IValue>>() != null);
 #if CONTRACTS_FORALL
@@ -148,7 +148,7 @@
 
         public ReadOnlyCollection<IObjectReference> GetInstances(long maxInstances)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(maxInstances >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(maxInstances >= 0);
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IObjectReference>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<IObjectReference>>(), value => this.GetVirtualMachine().Equals(value.GetVirtualMachine())));
@@ -219,8 +219,8 @@
 
         public ReadOnlyCollection<IMethod> GetMethodsByName(string name)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IMethod>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<IMethod>>(), method => method != null && this.GetVirtualMachine().Equals(method.GetVirtualMachine())));
@@ -231,10 +231,10 @@
 
         public ReadOnlyCollection<IMethod> GetMethodsByName(string name, string signature)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentNullException>(signature != null, "signature");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentNullException>(signature != null, "signature");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IMethod>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<IMethod>>(), method => method != null && this.GetVirtualMachine().Equals(method.GetVirtualMachine())));
@@ -269,7 +269,7 @@
 
         public ReadOnlyCollection<string> GetSourceNames(string stratum)
         {
-            Contract.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
+            ContractSlim.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
             Contract.Ensures(Contract.Result<ReadOnlyCollection<string>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<string>>(), name => !string.IsNullOrEmpty(name)));
@@ -280,7 +280,7 @@
 
         public ReadOnlyCollection<string> GetSourcePaths(string stratum)
         {
-            Contract.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
+            ContractSlim.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
             Contract.Ensures(Contract.Result<ReadOnlyCollection<string>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<string>>(), name => !string.IsNullOrEmpty(name)));

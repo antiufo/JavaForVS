@@ -16,9 +16,9 @@
         public DebugSymbolSearchEvent(enum_EVENTATTRIBUTES attributes, IDebugModule3 module, string debugMessage, enum_MODULE_INFO_FLAGS moduleInfoFlags)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(module != null, "module");
-            Contract.Requires<ArgumentNullException>(debugMessage != null, "debugMessage");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(debugMessage));
+            ContractSlim.Requires<ArgumentNullException>(module != null, "module");
+            ContractSlim.Requires<ArgumentNullException>(debugMessage != null, "debugMessage");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(debugMessage));
 
             _module = module;
             _debugMessage = debugMessage;

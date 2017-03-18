@@ -27,9 +27,9 @@
 
         public EditorNavigationMargin(IWpfTextView wpfTextView, IEnumerable<IEditorNavigationSource> sources, IJavaEditorNavigationTypeRegistryService editorNavigationTypeRegistryService)
         {
-            Contract.Requires<ArgumentNullException>(wpfTextView != null, "wpfTextView");
-            Contract.Requires<ArgumentNullException>(sources != null, "sources");
-            Contract.Requires<ArgumentNullException>(editorNavigationTypeRegistryService != null, "editorNavigationTypeRegistryService");
+            ContractSlim.Requires<ArgumentNullException>(wpfTextView != null, "wpfTextView");
+            ContractSlim.Requires<ArgumentNullException>(sources != null, "sources");
+            ContractSlim.Requires<ArgumentNullException>(editorNavigationTypeRegistryService != null, "editorNavigationTypeRegistryService");
 
             this._wpfTextView = wpfTextView;
             this._sources = sources;
@@ -187,7 +187,7 @@
 
         private void UpdateNavigationTargets(IEditorNavigationSource source)
         {
-            Contract.Requires<ArgumentNullException>(source != null, "source");
+            ContractSlim.Requires<ArgumentNullException>(source != null, "source");
 
             lock (this)
             {
@@ -213,7 +213,7 @@
 
         private void UpdateNavigationTargets(IEnumerable<IEditorNavigationTarget> targets)
         {
-            Contract.Requires<ArgumentNullException>(targets != null, "targets");
+            ContractSlim.Requires<ArgumentNullException>(targets != null, "targets");
 
             foreach (var group in targets.GroupBy(target => target.EditorNavigationType))
             {

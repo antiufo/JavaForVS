@@ -11,7 +11,7 @@
 
         public NormalizedSnapshotSpanCollection CommentSpans(NormalizedSnapshotSpanCollection spans)
         {
-            Contract.Requires<ArgumentNullException>(spans != null, "spans");
+            ContractSlim.Requires<ArgumentNullException>(spans != null, "spans");
             Contract.Ensures(Contract.Result<NormalizedSnapshotSpanCollection>() != null);
 
             throw new NotImplementedException();
@@ -19,7 +19,7 @@
 
         public NormalizedSnapshotSpanCollection UncommentSpans(NormalizedSnapshotSpanCollection spans)
         {
-            Contract.Requires<ArgumentNullException>(spans != null, "spans");
+            ContractSlim.Requires<ArgumentNullException>(spans != null, "spans");
             Contract.Ensures(Contract.Result<NormalizedSnapshotSpanCollection>() != null);
 
             throw new NotImplementedException();

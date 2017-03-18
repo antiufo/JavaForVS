@@ -172,8 +172,8 @@
 
         public IAccessWatchpointRequest CreateAccessWatchpointRequest(IField field)
         {
-            Contract.Requires<ArgumentNullException>(field != null, "field");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(field != null, "field");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IAccessWatchpointRequest>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IAccessWatchpointRequest>().GetVirtualMachine()));
 
@@ -182,8 +182,8 @@
 
         public IBreakpointRequest CreateBreakpointRequest(ILocation location)
         {
-            Contract.Requires<ArgumentNullException>(location != null, "location");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(location.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(location.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IBreakpointRequest>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IBreakpointRequest>().GetVirtualMachine()));
 
@@ -208,7 +208,7 @@
 
         public IExceptionRequest CreateExceptionRequest(IReferenceType referenceType, bool notifyCaught, bool notifyUncaught)
         {
-            Contract.Requires<VirtualMachineMismatchException>(referenceType == null || this.GetVirtualMachine().Equals(referenceType.GetVirtualMachine()));
+            ContractSlim.Requires<VirtualMachineMismatchException>(referenceType == null || this.GetVirtualMachine().Equals(referenceType.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IExceptionRequest>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IExceptionRequest>().GetVirtualMachine()));
 
@@ -233,8 +233,8 @@
 
         public IModificationWatchpointRequest CreateModificationWatchpointRequest(IField field)
         {
-            Contract.Requires<ArgumentNullException>(field != null, "field");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(field != null, "field");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IModificationWatchpointRequest>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IModificationWatchpointRequest>().GetVirtualMachine()));
 
@@ -275,7 +275,7 @@
 
         public IStepRequest CreateStepRequest(IThreadReference thread, StepSize size, StepDepth depth)
         {
-            Contract.Requires<VirtualMachineMismatchException>(thread == null || this.GetVirtualMachine().Equals(thread.GetVirtualMachine()));
+            ContractSlim.Requires<VirtualMachineMismatchException>(thread == null || this.GetVirtualMachine().Equals(thread.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IStepRequest>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IStepRequest>().GetVirtualMachine()));
 
@@ -313,17 +313,17 @@
 
         public void DeleteEventRequest(IEventRequest request)
         {
-            Contract.Requires<ArgumentNullException>(request != null, "request");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(request.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(request != null, "request");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(request.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }
 
         public void DeleteEventRequests(IEnumerable<IEventRequest> requests)
         {
-            Contract.Requires<ArgumentNullException>(requests != null, "request");
-            Contract.Requires<ArgumentException>(Contract.ForAll(requests, request => request != null));
-            Contract.Requires<ArgumentException>(Contract.ForAll(requests, request => this.GetVirtualMachine().Equals(request.GetVirtualMachine())));
+            ContractSlim.Requires<ArgumentNullException>(requests != null, "request");
+            ContractSlim.Requires<ArgumentException>(Contract.ForAll(requests, request => request != null));
+            ContractSlim.Requires<ArgumentException>(Contract.ForAll(requests, request => this.GetVirtualMachine().Equals(request.GetVirtualMachine())));
 
             throw new NotImplementedException();
         }

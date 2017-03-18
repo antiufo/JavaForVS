@@ -12,7 +12,7 @@
 
         public static object GetExtensibilityObject(this IVsHierarchy hierarchy, uint itemId, bool nothrow)
         {
-            Contract.Requires<ArgumentNullException>(hierarchy != null, "hierarchy");
+            ContractSlim.Requires<ArgumentNullException>(hierarchy != null, "hierarchy");
 
             try
             {
@@ -64,8 +64,8 @@
 
         public static void EnumHierarchyItems(this IVsHierarchy hierarchy, uint itemid, int recursionLevel, bool isSolution, bool visibleOnly, bool nothrow, ProcessHierarchyNode processNode)
         {
-            Contract.Requires<ArgumentNullException>(hierarchy != null, "hierarchy");
-            Contract.Requires<ArgumentNullException>(processNode != null, "processNode");
+            ContractSlim.Requires<ArgumentNullException>(hierarchy != null, "hierarchy");
+            ContractSlim.Requires<ArgumentNullException>(processNode != null, "processNode");
 
             int hr;
             IntPtr nestedHierarchyObj;

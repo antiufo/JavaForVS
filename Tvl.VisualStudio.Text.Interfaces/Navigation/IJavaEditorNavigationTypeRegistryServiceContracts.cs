@@ -10,8 +10,8 @@
     {
         IEditorNavigationType IJavaEditorNavigationTypeRegistryService.CreateEditorNavigationType(JavaEditorNavigationTypeDefinition definition, string type, IEnumerable<IEditorNavigationType> baseTypes)
         {
-            Contract.Requires<ArgumentNullException>(definition != null);
-            Contract.Requires<ArgumentNullException>(type != null);
+            ContractSlim.Requires<ArgumentNullException>(definition != null);
+            ContractSlim.Requires<ArgumentNullException>(type != null);
             Contract.Ensures(Contract.Result<IEditorNavigationType>() != null);
 
             throw new NotImplementedException();
@@ -19,8 +19,8 @@
 
         IEditorNavigationType IJavaEditorNavigationTypeRegistryService.CreateTransientEditorNavigationType(IEnumerable<IEditorNavigationType> baseTypes)
         {
-            Contract.Requires<ArgumentNullException>(baseTypes != null);
-            Contract.Requires<ArgumentException>(baseTypes.Any());
+            ContractSlim.Requires<ArgumentNullException>(baseTypes != null);
+            ContractSlim.Requires<ArgumentException>(baseTypes.Any());
             Contract.Ensures(Contract.Result<IEditorNavigationType>() != null);
 
             throw new NotImplementedException();
@@ -28,8 +28,8 @@
 
         IEditorNavigationType IJavaEditorNavigationTypeRegistryService.CreateTransientEditorNavigationType(params IEditorNavigationType[] baseTypes)
         {
-            Contract.Requires<ArgumentNullException>(baseTypes != null);
-            Contract.Requires<ArgumentException>(baseTypes.Length > 0);
+            ContractSlim.Requires<ArgumentNullException>(baseTypes != null);
+            ContractSlim.Requires<ArgumentException>(baseTypes.Length > 0);
             Contract.Ensures(Contract.Result<IEditorNavigationType>() != null);
 
             throw new NotImplementedException();
@@ -37,7 +37,7 @@
 
         IEditorNavigationType IJavaEditorNavigationTypeRegistryService.GetEditorNavigationType(string type)
         {
-            Contract.Requires<ArgumentNullException>(type != null);
+            ContractSlim.Requires<ArgumentNullException>(type != null);
 
             throw new NotImplementedException();
         }

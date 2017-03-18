@@ -39,8 +39,8 @@
 
         public NetworkInterpreter(Network network, ITokenStream input)
         {
-            Contract.Requires<ArgumentNullException>(network != null, "network");
-            Contract.Requires<ArgumentNullException>(input != null, "input");
+            ContractSlim.Requires<ArgumentNullException>(network != null, "network");
+            ContractSlim.Requires<ArgumentNullException>(input != null, "input");
 
             _network = network;
             _input = input;

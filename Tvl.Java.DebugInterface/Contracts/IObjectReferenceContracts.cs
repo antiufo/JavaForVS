@@ -29,8 +29,8 @@
 
         public IValue GetValue(IField field)
         {
-            Contract.Requires<ArgumentNullException>(field != null, "field");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(field != null, "field");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IValue>() == null || this.GetVirtualMachine().Equals(Contract.Result<IValue>().GetVirtualMachine()));
 
             throw new NotImplementedException();
@@ -38,9 +38,9 @@
 
         public IDictionary<IField, IValue> GetValues(IEnumerable<IField> fields)
         {
-            Contract.Requires<ArgumentNullException>(fields != null, "fields");
-            Contract.Requires<ArgumentException>(Contract.ForAll(fields, field => field != null));
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(fields, field => this.GetVirtualMachine().Equals(field.GetVirtualMachine())));
+            ContractSlim.Requires<ArgumentNullException>(fields != null, "fields");
+            ContractSlim.Requires<ArgumentException>(Contract.ForAll(fields, field => field != null));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(fields, field => this.GetVirtualMachine().Equals(field.GetVirtualMachine())));
             Contract.Ensures(Contract.Result<IDictionary<IField, IValue>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<IDictionary<IField, IValue>>(), pair => pair.Key != null));
@@ -52,11 +52,11 @@
 
         public IStrongValueHandle<IValue> InvokeMethod(IThreadReference thread, IMethod method, InvokeOptions options, params IValue[] arguments)
         {
-            Contract.Requires<ArgumentNullException>(method != null, "method");
-            Contract.Requires<VirtualMachineMismatchException>(thread == null || this.GetVirtualMachine().Equals(thread.GetVirtualMachine()));
-            Contract.Requires<VirtualMachineMismatchException>(method.GetVirtualMachine().Equals(this.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(method != null, "method");
+            ContractSlim.Requires<VirtualMachineMismatchException>(thread == null || this.GetVirtualMachine().Equals(thread.GetVirtualMachine()));
+            ContractSlim.Requires<VirtualMachineMismatchException>(method.GetVirtualMachine().Equals(this.GetVirtualMachine()));
 #if CONTRACTS_FORALL
-            Contract.Requires<VirtualMachineMismatchException>(arguments == null || Contract.ForAll(arguments, argument => argument == null || this.GetVirtualMachine().Equals(argument.GetVirtualMachine())));
+            ContractSlim.Requires<VirtualMachineMismatchException>(arguments == null || Contract.ForAll(arguments, argument => argument == null || this.GetVirtualMachine().Equals(argument.GetVirtualMachine())));
 #endif
             Contract.Ensures(Contract.Result<IStrongValueHandle<IValue>>() == null || this.GetVirtualMachine().Equals(Contract.Result<IStrongValueHandle<IValue>>().GetVirtualMachine()));
 
@@ -95,9 +95,9 @@
 
         public void SetValue(IField field, IValue value)
         {
-            Contract.Requires<ArgumentNullException>(field != null, "field");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
-            Contract.Requires<VirtualMachineMismatchException>(value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(field != null, "field");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(field.GetVirtualMachine()));
+            ContractSlim.Requires<VirtualMachineMismatchException>(value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }

@@ -15,7 +15,7 @@
 
         public ConstantUtf8(string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
             _value = value;
         }
 

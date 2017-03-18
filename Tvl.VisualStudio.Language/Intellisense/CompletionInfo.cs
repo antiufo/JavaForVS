@@ -9,7 +9,7 @@
 
         public CompletionInfo(IntellisenseController controller)
         {
-            Contract.Requires<ArgumentNullException>(controller != null, "controller");
+            ContractSlim.Requires<ArgumentNullException>(controller != null, "controller");
 
             _controller = controller;
         }

@@ -10,7 +10,7 @@
     {
         public static IDebugDocument2 GetDocument(this IDebugDocumentPosition2 documentPosition)
         {
-            Contract.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
+            ContractSlim.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
 
             IDebugDocument2 document;
             ErrorHandler.ThrowOnFailure(documentPosition.GetDocument(out document));
@@ -19,7 +19,7 @@
 
         public static string GetFileName(this IDebugDocumentPosition2 documentPosition)
         {
-            Contract.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
+            ContractSlim.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
 
             string fileName;
             ErrorHandler.ThrowOnFailure(documentPosition.GetFileName(out fileName));
@@ -28,7 +28,7 @@
 
         public static TextSpan GetRange(this IDebugDocumentPosition2 documentPosition)
         {
-            Contract.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
+            ContractSlim.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
             TEXT_POSITION[] startPosition = new TEXT_POSITION[1];
             TEXT_POSITION[] endPosition = new TEXT_POSITION[1];
             ErrorHandler.ThrowOnFailure(documentPosition.GetRange(startPosition, endPosition));

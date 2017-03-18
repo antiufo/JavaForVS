@@ -12,7 +12,7 @@
         public LookupSwitchData(int defaultValue, IEnumerable<KeyValuePair<int, int>> pairs)
             : base(defaultValue)
         {
-            Contract.Requires<ArgumentNullException>(pairs != null, "pairs");
+            ContractSlim.Requires<ArgumentNullException>(pairs != null, "pairs");
             _pairs = new ImmutableList<KeyValuePair<int, int>>(pairs);
         }
 

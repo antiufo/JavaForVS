@@ -37,9 +37,9 @@
 
         public JavaDebugProperty(IDebugProperty2 parent, string name, string fullName, IType propertyType, IValue value, bool hasSideEffects, IField field = null, IMethod method = null)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentNullException>(fullName != null, "fullName");
-            Contract.Requires<ArgumentNullException>(propertyType != null, "propertyType");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentNullException>(fullName != null, "fullName");
+            ContractSlim.Requires<ArgumentNullException>(propertyType != null, "propertyType");
 
             IObjectReference referencer = null;
             IType valueType = propertyType;
@@ -49,7 +49,7 @@
 
         public JavaDebugProperty(IDebugProperty2 parent, EvaluatedExpression evaluatedExpression)
         {
-            Contract.Requires<ArgumentNullException>(evaluatedExpression != null, "evaluatedExpression");
+            ContractSlim.Requires<ArgumentNullException>(evaluatedExpression != null, "evaluatedExpression");
 
             _parent = parent;
             _evaluatedExpression = evaluatedExpression;
@@ -57,10 +57,10 @@
 
         private JavaDebugProperty(JavaDebugProperty parent, string name, IType type)
         {
-            Contract.Requires<ArgumentNullException>(parent != null, "parent");
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentNullException>(type != null, "type");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(parent != null, "parent");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentNullException>(type != null, "type");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             _parent = parent;
             _evaluatedExpression = new EvaluatedExpression(
@@ -82,9 +82,9 @@
 
         private JavaDebugProperty(JavaDebugProperty parent, string name)
         {
-            Contract.Requires<ArgumentNullException>(parent != null, "parent");
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(parent != null, "parent");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             _parent = parent;
             _evaluatedExpression = new EvaluatedExpression(

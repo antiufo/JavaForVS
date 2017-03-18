@@ -9,10 +9,10 @@
     {
         public LanguageElementTag(string name, string category, ImageSource glyph, SnapshotSpan target)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentNullException>(category != null, "category");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(category));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentNullException>(category != null, "category");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(category));
 
             this.Name = name;
             this.Category = category;

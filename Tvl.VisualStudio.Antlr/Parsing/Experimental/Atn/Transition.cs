@@ -13,7 +13,7 @@
 
         public Transition(State targetState)
         {
-            Contract.Requires<ArgumentNullException>(targetState != null, "targetState");
+            ContractSlim.Requires<ArgumentNullException>(targetState != null, "targetState");
 
             _targetState = targetState;
         }

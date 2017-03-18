@@ -11,9 +11,9 @@
 
         public IVirtualMachine Launch(IEnumerable<KeyValuePair<string, IConnectorArgument>> arguments)
         {
-            Contract.Requires<ArgumentNullException>(arguments != null, "arguments");
+            ContractSlim.Requires<ArgumentNullException>(arguments != null, "arguments");
 #if CONTRACTS_FORALL
-            Contract.Requires<ArgumentException>(Contract.ForAll(arguments, pair => !string.IsNullOrEmpty(pair.Key) && pair.Value != null));
+            ContractSlim.Requires<ArgumentException>(Contract.ForAll(arguments, pair => !string.IsNullOrEmpty(pair.Key) && pair.Value != null));
 #endif
             Contract.Ensures(Contract.Result<IVirtualMachine>() != null);
 

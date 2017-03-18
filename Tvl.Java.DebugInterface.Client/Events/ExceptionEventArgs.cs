@@ -13,7 +13,7 @@
         internal ExceptionEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request, ThreadReference thread, Location location, IObjectReference exception, ILocation catchLocation)
             : base(virtualMachine, suspendPolicy, request, thread, location)
         {
-            Contract.Requires<ArgumentNullException>(exception != null, "exception");
+            ContractSlim.Requires<ArgumentNullException>(exception != null, "exception");
 
             _exception = exception;
             _catchLocation = catchLocation;

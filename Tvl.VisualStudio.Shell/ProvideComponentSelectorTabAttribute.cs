@@ -15,10 +15,10 @@
 
         public ProvideComponentSelectorTabAttribute(Type componentSelectorTabType, Type packageType, string name)
         {
-            Contract.Requires<ArgumentNullException>(componentSelectorTabType != null, "componentSelectorTabType");
-            Contract.Requires<ArgumentNullException>(packageType != null, "packageType");
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(componentSelectorTabType != null, "componentSelectorTabType");
+            ContractSlim.Requires<ArgumentNullException>(packageType != null, "packageType");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             _componentSelectorTabGuid = componentSelectorTabType.GUID;
             _packageGuid = packageType.GUID;
@@ -27,10 +27,10 @@
 
         public ProvideComponentSelectorTabAttribute(Guid componentSelectorTabGuid, Guid packageGuid, string name)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
-            Contract.Requires<ArgumentException>(componentSelectorTabGuid != Guid.Empty);
-            Contract.Requires<ArgumentException>(packageGuid != Guid.Empty);
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentException>(componentSelectorTabGuid != Guid.Empty);
+            ContractSlim.Requires<ArgumentException>(packageGuid != Guid.Empty);
 
             _componentSelectorTabGuid = componentSelectorTabGuid;
             _packageGuid = packageGuid;

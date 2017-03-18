@@ -45,8 +45,8 @@
 
         public AntlrClassifierBase(ITextBuffer textBuffer, IEqualityComparer<TState> stateComparer, ClassifierOptions options)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(stateComparer != null, "stateComparer");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(stateComparer != null, "stateComparer");
 
             _textBuffer = textBuffer;
             _stateComparer = stateComparer;
@@ -357,8 +357,8 @@
 
         protected virtual IEnumerable<ClassificationSpan> GetClassificationSpansForToken(IToken token, ITextSnapshot snapshot)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
-            Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
             Contract.Ensures(Contract.Result<IEnumerable<ClassificationSpan>>() != null);
 
             var classification = ClassifyToken(token);
@@ -373,13 +373,13 @@
 
         protected virtual IClassificationType ClassifyToken(IToken token)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
             return null;
         }
 
         protected virtual void OnClassificationChanged(ClassificationChangedEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             var t = ClassificationChanged;
             if (t != null)
@@ -388,7 +388,7 @@
 
         protected virtual bool IsMultilineClassificationSpan(ClassificationSpan span)
         {
-            Contract.Requires<ArgumentNullException>(span != null, "span");
+            ContractSlim.Requires<ArgumentNullException>(span != null, "span");
 
             if (span.Span.IsEmpty)
                 return false;
@@ -578,7 +578,7 @@
 
             public ClassifierState(ITextSnapshot snapshot)
             {
-                Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+                ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
                 _lineStatesVersion = snapshot.Version;
                 _lineStates = new LineStateInfo[snapshot.LineCount];
                 for (int i = 0; i < _lineStates.Length; i++)

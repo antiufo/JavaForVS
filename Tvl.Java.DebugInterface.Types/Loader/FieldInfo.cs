@@ -24,8 +24,8 @@
 
         public static FieldInfo FromMemory(IList<ConstantPoolEntry> constantPool, IntPtr ptr, int offset)
         {
-            Contract.Requires<ArgumentNullException>(constantPool != null, "constantPool");
-            Contract.Requires<ArgumentException>(ptr != IntPtr.Zero);
+            ContractSlim.Requires<ArgumentNullException>(constantPool != null, "constantPool");
+            ContractSlim.Requires<ArgumentException>(ptr != IntPtr.Zero);
 
             int initialOffset = offset;
 

@@ -9,7 +9,7 @@
     {
         public ICommenter GetCommenter(ITextView textView)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
 
             throw new NotImplementedException();
         }

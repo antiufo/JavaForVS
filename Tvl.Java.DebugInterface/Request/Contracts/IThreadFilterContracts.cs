@@ -10,8 +10,8 @@
 
         public void AddThreadFilter(IThreadReference thread)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(thread.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(thread.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }

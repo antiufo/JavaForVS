@@ -41,7 +41,7 @@
 
         private static string GetFullSignature(ITypeComponent y)
         {
-            Contract.Requires<ArgumentNullException>(y != null, "y");
+            ContractSlim.Requires<ArgumentNullException>(y != null, "y");
             return y.GetName() + " " + y.GetSignature();
         }
     }

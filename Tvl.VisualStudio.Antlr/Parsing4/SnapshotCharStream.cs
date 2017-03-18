@@ -18,7 +18,7 @@
 
         public SnapshotCharStream(ITextSnapshot snapshot)
         {
-            Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+            ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
 
             this.Snapshot = snapshot;
             this._count = snapshot.Length;
@@ -29,12 +29,12 @@
         public SnapshotCharStream(ITextSnapshot snapshot, Span cachedSpan)
             : this(new SnapshotSpan(snapshot, cachedSpan))
         {
-            Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+            ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
         }
 
         public SnapshotCharStream(SnapshotSpan cachedSpan)
         {
-            Contract.Requires<ArgumentException>(cachedSpan.Snapshot != null);
+            ContractSlim.Requires<ArgumentException>(cachedSpan.Snapshot != null);
 
             this.Snapshot = cachedSpan.Snapshot;
             _count = Snapshot.Length;

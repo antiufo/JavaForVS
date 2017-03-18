@@ -21,8 +21,8 @@
         public DebugExpressionEvaluatorWalker(ITreeNodeStream input, IStackFrame stackFrame)
             : this(input)
         {
-            Contract.Requires<ArgumentNullException>(input != null, "input");
-            Contract.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
+            ContractSlim.Requires<ArgumentNullException>(input != null, "input");
+            ContractSlim.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
 
             _stackFrame = stackFrame;
         }
@@ -38,8 +38,8 @@
 
         private EvaluatedExpression GetValueInScope(string name)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             IMethod method = _stackFrame.GetLocation().GetMethod();
 
@@ -106,8 +106,8 @@
 
         private bool TryGetValueInScope(string name, out EvaluatedExpression result)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             result = null;
 
@@ -156,9 +156,9 @@
 
         private EvaluatedExpression GetField(EvaluatedExpression value, string name)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             IArrayReference arrayValue = value.Value as IArrayReference;
             if (arrayValue != null)
@@ -202,9 +202,9 @@
 
         private EvaluatedExpression GetField(IReferenceType referenceType, string name)
         {
-            Contract.Requires<ArgumentNullException>(referenceType != null, "referenceType");
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(referenceType != null, "referenceType");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             IField field = referenceType.GetFieldByName(name);
             if (field != null)
@@ -223,8 +223,8 @@
 
         private EvaluatedExpression CastExpression(EvaluatedExpression expression, IType targetType)
         {
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Requires<ArgumentNullException>(targetType != null, "targetType");
+            ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
+            ContractSlim.Requires<ArgumentNullException>(targetType != null, "targetType");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             throw new NotImplementedException();
@@ -232,8 +232,8 @@
 
         private EvaluatedExpression GetArrayElement(EvaluatedExpression array, EvaluatedExpression index)
         {
-            Contract.Requires<ArgumentNullException>(array != null, "array");
-            Contract.Requires<ArgumentNullException>(index != null, "index");
+            ContractSlim.Requires<ArgumentNullException>(array != null, "array");
+            ContractSlim.Requires<ArgumentNullException>(index != null, "index");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             IArrayReference arrayReference = array.Value as IArrayReference;
@@ -294,8 +294,8 @@
 
         private EvaluatedExpression EvaluateUnary(CommonTree op, EvaluatedExpression expression)
         {
-            Contract.Requires<ArgumentNullException>(op != null, "op");
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
+            ContractSlim.Requires<ArgumentNullException>(op != null, "op");
+            ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             string operatorText;
@@ -409,7 +409,7 @@
 
         //private bool IsPrimitiveNumericValue(EvaluatedExpression expression)
         //{
-        //    Contract.Requires<ArgumentNullException>(expression != null, "expression");
+        //    ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
 
         //    IPrimitiveValue primitiveValue = expression.Value as IPrimitiveValue;
         //    if (primitiveValue == null)
@@ -420,9 +420,9 @@
 
         private EvaluatedExpression EvaluateBinary(CommonTree op, EvaluatedExpression left, EvaluatedExpression right)
         {
-            Contract.Requires<ArgumentNullException>(op != null, "op");
-            Contract.Requires<ArgumentNullException>(left != null, "left");
-            Contract.Requires<ArgumentNullException>(right != null, "right");
+            ContractSlim.Requires<ArgumentNullException>(op != null, "op");
+            ContractSlim.Requires<ArgumentNullException>(left != null, "left");
+            ContractSlim.Requires<ArgumentNullException>(right != null, "right");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             switch (op.Type)
@@ -493,9 +493,9 @@
 
         private EvaluatedExpression EvaluateTernary(EvaluatedExpression condition, EvaluatedExpression valueIfTrue, EvaluatedExpression valueIfFalse)
         {
-            Contract.Requires<ArgumentNullException>(condition != null, "condition");
-            Contract.Requires<ArgumentNullException>(valueIfTrue != null, "valueIfTrue");
-            Contract.Requires<ArgumentNullException>(valueIfFalse != null, "valueIfFalse");
+            ContractSlim.Requires<ArgumentNullException>(condition != null, "condition");
+            ContractSlim.Requires<ArgumentNullException>(valueIfTrue != null, "valueIfTrue");
+            ContractSlim.Requires<ArgumentNullException>(valueIfFalse != null, "valueIfFalse");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             IBooleanValue booleanValue = condition.Value as IBooleanValue;
@@ -509,8 +509,8 @@
 
         private EvaluatedExpression EvaluateInstanceOf(EvaluatedExpression expression, IType type)
         {
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Requires<ArgumentNullException>(type != null, "type");
+            ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
+            ContractSlim.Requires<ArgumentNullException>(type != null, "type");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             throw new NotImplementedException();
@@ -518,8 +518,8 @@
 
         public EvaluatedExpression EvaluateObject(List<CommonTree> parts)
         {
-            Contract.Requires<ArgumentNullException>(parts != null, "parts");
-            Contract.Requires<ArgumentException>(parts.Count > 0);
+            ContractSlim.Requires<ArgumentNullException>(parts != null, "parts");
+            ContractSlim.Requires<ArgumentException>(parts.Count > 0);
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             throw new NotImplementedException();
@@ -527,7 +527,7 @@
 
         public EvaluatedExpression EvaluateTypeOrObject(IList<CommonTree> parts)
         {
-            Contract.Requires<ArgumentNullException>(parts != null, "parts");
+            ContractSlim.Requires<ArgumentNullException>(parts != null, "parts");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             if (parts.Count == 0)
@@ -587,9 +587,9 @@
 
         public EvaluatedExpression EvaluateMethod(EvaluatedExpression expression, CommonTree methodName, IList<EvaluatedExpression> arguments)
         {
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Requires<ArgumentNullException>(methodName != null, "methodName");
-            Contract.Requires<ArgumentNullException>(arguments != null, "arguments");
+            ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
+            ContractSlim.Requires<ArgumentNullException>(methodName != null, "methodName");
+            ContractSlim.Requires<ArgumentNullException>(arguments != null, "arguments");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
             Contract.Ensures(Contract.Result<EvaluatedExpression>().Method != null);
 
@@ -660,8 +660,8 @@
 
         private bool IsAssignableFrom(IType targetType, IType sourceType)
         {
-            Contract.Requires<ArgumentNullException>(targetType != null, "targetType");
-            Contract.Requires<ArgumentNullException>(sourceType != null, "sourceType");
+            ContractSlim.Requires<ArgumentNullException>(targetType != null, "targetType");
+            ContractSlim.Requires<ArgumentNullException>(sourceType != null, "sourceType");
 
             if (targetType.Equals(sourceType))
                 return true;
@@ -681,8 +681,8 @@
 
         protected static void GetInheritedTypes(IReferenceType type, HashSet<IReferenceType> inheritedTypes)
         {
-            Contract.Requires<ArgumentNullException>(type != null, "type");
-            Contract.Requires<ArgumentNullException>(inheritedTypes != null, "inheritedTypes");
+            ContractSlim.Requires<ArgumentNullException>(type != null, "type");
+            ContractSlim.Requires<ArgumentNullException>(inheritedTypes != null, "inheritedTypes");
 
             List<IReferenceType> immediateBases = new List<IReferenceType>();
 
@@ -711,9 +711,9 @@
 
         public EvaluatedExpression EvaluateMethod(ICollection<CommonTree> parts, IList<EvaluatedExpression> arguments)
         {
-            Contract.Requires<ArgumentNullException>(parts != null, "parts");
-            Contract.Requires<ArgumentNullException>(arguments != null, "arguments");
-            Contract.Requires<ArgumentException>(parts.Count > 0);
+            ContractSlim.Requires<ArgumentNullException>(parts != null, "parts");
+            ContractSlim.Requires<ArgumentNullException>(arguments != null, "arguments");
+            ContractSlim.Requires<ArgumentException>(parts.Count > 0);
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
             Contract.Ensures(Contract.Result<EvaluatedExpression>().Method != null);
 
@@ -727,8 +727,8 @@
 
         public EvaluatedExpression EvaluateCall(EvaluatedExpression obj, List<EvaluatedExpression> arguments)
         {
-            Contract.Requires<ArgumentNullException>(obj != null, "obj");
-            Contract.Requires<ArgumentNullException>(arguments != null, "arguments");
+            ContractSlim.Requires<ArgumentNullException>(obj != null, "obj");
+            ContractSlim.Requires<ArgumentNullException>(arguments != null, "arguments");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             IMethod method = obj.Method;
@@ -758,8 +758,8 @@
 
         private EvaluatedExpression FindClass(string signature)
         {
-            Contract.Requires<ArgumentNullException>(signature != null, "signature");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
+            ContractSlim.Requires<ArgumentNullException>(signature != null, "signature");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             switch (signature[0])
@@ -815,7 +815,7 @@
 
         private IReferenceType GetReflectedType(EvaluatedExpression typeExpression)
         {
-            Contract.Requires<ArgumentNullException>(typeExpression != null, "typeExpression");
+            ContractSlim.Requires<ArgumentNullException>(typeExpression != null, "typeExpression");
 
             IClassObjectReference classObject = typeExpression.Value as IClassObjectReference;
             if (classObject == null)
@@ -826,7 +826,7 @@
 
         private EvaluatedExpression GetArrayClass(EvaluatedExpression elementType)
         {
-            Contract.Requires<ArgumentNullException>(elementType != null, "elementType");
+            ContractSlim.Requires<ArgumentNullException>(elementType != null, "elementType");
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             IClassObjectReference classObject = elementType.Value as IClassObjectReference;
@@ -847,8 +847,8 @@
 
         private EvaluatedExpression GetIntLiteral(string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             string parseValue = value;
@@ -868,8 +868,8 @@
 
         private EvaluatedExpression GetLongLiteral(string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             string parseValue = value;
@@ -889,8 +889,8 @@
 
         private EvaluatedExpression GetFloatLiteral(string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             string parseValue = value;
@@ -906,8 +906,8 @@
 
         private EvaluatedExpression GetDoubleLiteral(string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             string parseValue = value;
@@ -923,8 +923,8 @@
 
         private EvaluatedExpression GetCharLiteral(string value)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(value));
             Contract.Ensures(Contract.Result<EvaluatedExpression>() != null);
 
             char charValue;

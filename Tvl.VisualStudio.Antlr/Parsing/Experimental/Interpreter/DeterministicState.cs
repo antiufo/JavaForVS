@@ -15,7 +15,7 @@
 
         public DeterministicState(IEnumerable<ContextFrame> contexts)
         {
-            Contract.Requires<ArgumentNullException>(contexts != null, "contexts");
+            ContractSlim.Requires<ArgumentNullException>(contexts != null, "contexts");
 
             _contexts = new HashSet<ContextFrame>(contexts);
         }
@@ -46,7 +46,7 @@
 
         public void AddTransition(DeterministicTransition transition)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
 
             _outgoingTransitions.Add(transition);
             transition.TargetState._incomingTransitions.Add(transition);

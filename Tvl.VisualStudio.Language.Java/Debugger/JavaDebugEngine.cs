@@ -356,8 +356,8 @@
 
         internal void BindVirtualizedBreakpoints(JavaDebugProgram program, JavaDebugThread thread, IReferenceType type, IEnumerable<string> sourcePaths)
         {
-            Contract.Requires<ArgumentNullException>(program != null, "program");
-            Contract.Requires<ArgumentNullException>(sourcePaths != null, "sourcePaths");
+            ContractSlim.Requires<ArgumentNullException>(program != null, "program");
+            ContractSlim.Requires<ArgumentNullException>(sourcePaths != null, "sourcePaths");
 
             var breakpoints = VirtualizedBreakpoints.ToArray();
             foreach (var breakpoint in breakpoints)

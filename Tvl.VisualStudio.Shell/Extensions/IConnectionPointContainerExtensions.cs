@@ -11,8 +11,8 @@
             where TObject : class, TEventInterface
             where TEventInterface : class
         {
-            Contract.Requires<ArgumentNullException>(container != null, "container");
-            Contract.Requires<ArgumentNullException>(@object != null, "object");
+            ContractSlim.Requires<ArgumentNullException>(container != null, "container");
+            ContractSlim.Requires<ArgumentNullException>(@object != null, "object");
             Contract.Ensures(Contract.Result<IDisposable>() != null);
 
             Guid eventGuid = typeof(TEventInterface).GUID;
@@ -29,7 +29,7 @@
         public static void Unadvise<TEventInterface>(this IConnectionPointContainer container, uint cookie)
             where TEventInterface : class
         {
-            Contract.Requires<ArgumentNullException>(container != null, "container");
+            ContractSlim.Requires<ArgumentNullException>(container != null, "container");
 
             if (cookie == 0)
                 return;

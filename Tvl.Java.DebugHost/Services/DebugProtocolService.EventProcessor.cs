@@ -193,7 +193,7 @@
 
             public Error SetEvent(JvmtiEnvironment environment, JniEnvironment nativeEnvironment, EventKind eventKind, SuspendPolicy suspendPolicy, ImmutableList<EventRequestModifier> modifiers, bool internalRequest, out RequestId requestId)
             {
-                Contract.Requires<ArgumentNullException>(modifiers != null, "modifiers");
+                ContractSlim.Requires<ArgumentNullException>(modifiers != null, "modifiers");
 
                 requestId = default(RequestId);
 

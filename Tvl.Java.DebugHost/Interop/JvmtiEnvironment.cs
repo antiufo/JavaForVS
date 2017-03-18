@@ -20,7 +20,7 @@
 
         private JvmtiEnvironment(JavaVM virtualMachine, jvmtiEnvHandle handle)
         {
-            Contract.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
+            ContractSlim.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
 
             _virtualMachine = virtualMachine;
             _handle = handle;

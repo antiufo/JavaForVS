@@ -27,8 +27,8 @@
 
         public IValue GetValue(ILocalVariable variable)
         {
-            Contract.Requires<ArgumentNullException>(variable != null, "variable");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(variable.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(variable != null, "variable");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(variable.GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IValue>() == null || this.GetVirtualMachine().Equals(Contract.Result<IValue>().GetVirtualMachine()));
 
             throw new NotImplementedException();
@@ -36,10 +36,10 @@
 
         public IDictionary<ILocalVariable, IValue> GetValues(IEnumerable<ILocalVariable> variables)
         {
-            Contract.Requires<ArgumentNullException>(variables != null, "variables");
+            ContractSlim.Requires<ArgumentNullException>(variables != null, "variables");
 #if CONTRACTS_FORALL
-            Contract.Requires<ArgumentException>(Contract.ForAll(variables, variable => variable != null));
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(variables, variable => this.GetVirtualMachine().Equals(variable.GetVirtualMachine())));
+            ContractSlim.Requires<ArgumentException>(Contract.ForAll(variables, variable => variable != null));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(variables, variable => this.GetVirtualMachine().Equals(variable.GetVirtualMachine())));
 #endif
             Contract.Ensures(Contract.Result<IDictionary<ILocalVariable, IValue>>() != null);
 #if CONTRACTS_FORALL
@@ -51,9 +51,9 @@
 
         public void SetValue(ILocalVariable variable, IValue value)
         {
-            Contract.Requires<ArgumentNullException>(variable != null, "variable");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(variable.GetVirtualMachine()));
-            Contract.Requires<VirtualMachineMismatchException>(value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(variable != null, "variable");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(variable.GetVirtualMachine()));
+            ContractSlim.Requires<VirtualMachineMismatchException>(value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }
@@ -75,8 +75,8 @@
 
         public ILocalVariable GetVisibleVariableByName(string name)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
             Contract.Ensures(Contract.Result<ILocalVariable>() == null || this.GetVirtualMachine().Equals(Contract.Result<ILocalVariable>().GetVirtualMachine()));
 
             throw new NotImplementedException();

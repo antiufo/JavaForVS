@@ -19,7 +19,7 @@
             : base(virtualMachine)
         {
             Contract.Requires(virtualMachine != null);
-            Contract.Requires<ArgumentException>(objectId.Handle != 0);
+            ContractSlim.Requires<ArgumentException>(objectId.Handle != 0);
 
             _objectId = objectId;
             _referenceType = referenceType;

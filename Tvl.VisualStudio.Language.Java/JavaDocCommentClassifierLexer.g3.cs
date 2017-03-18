@@ -13,7 +13,7 @@
         public JavaDocCommentClassifierLexer(ICharStream input, JavaClassifierLexer lexer)
             : this(input)
         {
-            Contract.Requires<ArgumentNullException>(lexer != null, "lexer");
+            ContractSlim.Requires<ArgumentNullException>(lexer != null, "lexer");
 
             _lexer = lexer;
         }

@@ -10,8 +10,8 @@
         public ProvideJvmExceptionAttribute(string exceptionFullName)
             : base(JavaDebuggerConstants.JavaDebugEngineGuidString, JavaDebuggerConstants.JvmExceptionKind, GetNamespace(exceptionFullName), exceptionFullName)
         {
-            Contract.Requires<ArgumentNullException>(exceptionFullName != null, "exceptionFullName");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(exceptionFullName));
+            ContractSlim.Requires<ArgumentNullException>(exceptionFullName != null, "exceptionFullName");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(exceptionFullName));
         }
 
         private static string GetNamespace(string exceptionFullName)

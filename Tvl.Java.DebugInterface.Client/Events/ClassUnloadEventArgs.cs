@@ -12,8 +12,8 @@
         internal ClassUnloadEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request, string signature)
             : base(virtualMachine, suspendPolicy, request)
         {
-            Contract.Requires<ArgumentNullException>(signature != null, "signature");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
+            ContractSlim.Requires<ArgumentNullException>(signature != null, "signature");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
 
             _signature = signature;
         }

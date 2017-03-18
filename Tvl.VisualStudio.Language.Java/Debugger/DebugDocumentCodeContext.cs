@@ -11,7 +11,7 @@
 
         public DebugDocumentCodeContext(IDebugDocumentPosition2 documentPosition)
         {
-            Contract.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
+            ContractSlim.Requires<ArgumentNullException>(documentPosition != null, "documentPosition");
             _documentPosition = documentPosition;
         }
 

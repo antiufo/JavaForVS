@@ -9,7 +9,7 @@
     {
         IBackgroundParser IJavaBackgroundParserFactoryService.GetBackgroundParser(ITextBuffer buffer)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
             throw new NotImplementedException();
         }
     }

@@ -15,8 +15,8 @@
         public DebugActivateDocumentEvent(enum_EVENTATTRIBUTES attributes, IDebugDocument2 document, IDebugDocumentContext2 documentContext)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(document != null, "document");
-            Contract.Requires<ArgumentNullException>(documentContext != null, "documentContext");
+            ContractSlim.Requires<ArgumentNullException>(document != null, "document");
+            ContractSlim.Requires<ArgumentNullException>(documentContext != null, "documentContext");
 
             _document = document;
             _documentContext = documentContext;

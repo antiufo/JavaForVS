@@ -33,8 +33,8 @@ namespace Tvl.VisualStudio.Language.Java.Debugger
 
         public JavaDebugThread(JavaDebugProgram program, IThreadReference thread, ThreadCategory category)
         {
-            Contract.Requires<ArgumentNullException>(program != null, "program");
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(program != null, "program");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
 
             _program = program;
             _thread = thread;

@@ -23,8 +23,8 @@
 
         public JavaDebugStaticMembersPseudoProperty(IDebugProperty2 parent, IReferenceType referenceType, IEnumerable<IField> fields)
         {
-            Contract.Requires<ArgumentNullException>(parent != null, "parent");
-            Contract.Requires<ArgumentNullException>(referenceType != null, "referenceType");
+            ContractSlim.Requires<ArgumentNullException>(parent != null, "parent");
+            ContractSlim.Requires<ArgumentNullException>(referenceType != null, "referenceType");
 
             _parent = parent;
             _referenceType = referenceType;

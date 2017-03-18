@@ -57,7 +57,7 @@
 
         public static MethodInfo FromMemory(IList<ConstantPoolEntry> constantPool, IntPtr ptr, int offset)
         {
-            Contract.Requires<ArgumentException>(ptr != IntPtr.Zero);
+            ContractSlim.Requires<ArgumentException>(ptr != IntPtr.Zero);
 
             int initialOffset = offset;
 

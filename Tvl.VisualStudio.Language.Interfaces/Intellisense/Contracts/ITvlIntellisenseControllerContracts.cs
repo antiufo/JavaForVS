@@ -145,51 +145,51 @@
 
         void ITvlIntellisenseController.GoToSource(VSOBJGOTOSRCTYPE gotoSourceType, ITrackingPoint triggerPoint)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             throw new NotImplementedException();
         }
 
         Task<IEnumerable<INavigateToTarget>> ITvlIntellisenseController.GoToSourceAsync(VSOBJGOTOSRCTYPE gotoSourceType, ITrackingPoint triggerPoint)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             Contract.Ensures(Contract.Result<Task<IEnumerable<INavigateToTarget>>>() != null);
             throw new NotImplementedException();
         }
 
         IEnumerable<INavigateToTarget> ITvlIntellisenseController.GoToSourceImpl(VSOBJGOTOSRCTYPE gotoSourceType, ITrackingPoint triggerPoint)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             Contract.Ensures(Contract.Result<IEnumerable<INavigateToTarget>>() != null);
             throw new NotImplementedException();
         }
 
         void ITvlIntellisenseController.TriggerCompletion(ITrackingPoint triggerPoint)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             throw new NotImplementedException();
         }
 
         void ITvlIntellisenseController.TriggerCompletion(ITrackingPoint triggerPoint, CompletionInfoType completionInfoType, IntellisenseInvocationType intellisenseInvocationType)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             throw new NotImplementedException();
         }
 
         void ITvlIntellisenseController.TriggerSignatureHelp(ITrackingPoint triggerPoint)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             throw new NotImplementedException();
         }
 
         void ITvlIntellisenseController.TriggerQuickInfo(ITrackingPoint triggerPoint)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             throw new NotImplementedException();
         }
 
         void ITvlIntellisenseController.TriggerSmartTag(ITrackingPoint triggerPoint, SmartTagType type, SmartTagState state)
         {
-            Contract.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
+            ContractSlim.Requires<ArgumentNullException>(triggerPoint != null, "triggerPoint");
             throw new NotImplementedException();
         }
 

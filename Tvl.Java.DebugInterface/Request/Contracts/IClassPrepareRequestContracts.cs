@@ -10,8 +10,8 @@
 
         public void AddSourceNameFilter(string sourceNamePattern)
         {
-            Contract.Requires<ArgumentNullException>(sourceNamePattern != null, "classPattern");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(sourceNamePattern));
+            ContractSlim.Requires<ArgumentNullException>(sourceNamePattern != null, "classPattern");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(sourceNamePattern));
 
             throw new NotImplementedException();
         }

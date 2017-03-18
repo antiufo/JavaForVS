@@ -13,7 +13,7 @@
         internal FieldAccessEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request, ThreadReference thread, Location location, IField field, IObjectReference instance)
             : base(virtualMachine, suspendPolicy, request, thread, location)
         {
-            Contract.Requires<ArgumentNullException>(field != null, "field");
+            ContractSlim.Requires<ArgumentNullException>(field != null, "field");
             Contract.Requires(field.GetIsStatic() || instance != null);
 
             _field = field;

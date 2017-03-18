@@ -51,7 +51,7 @@
 
         public bool TryStepBackward(Transition transition, int symbol, int symbolPosition, out InterpretTrace result)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
 
             Contract.Assert(Network.States.ContainsKey(transition.SourceState.Id), "Attempted to step outside the network.");
             Contract.Assert(Network.States.ContainsKey(transition.TargetState.Id), "Attempted to step into the network.");
@@ -221,7 +221,7 @@
 
         public bool TryStepForward(Transition transition, int symbol, int symbolPosition, out InterpretTrace result)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
             Contract.Ensures(!Contract.Result<bool>() || Contract.ValueAtReturn(out result) != null);
 
             Contract.Assert(Network.States.ContainsKey(transition.SourceState.Id), "Attempted to step into the network.");

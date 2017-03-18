@@ -11,7 +11,7 @@
 
         public BreakpointResolutionLocationCode(IDebugCodeContext2 codeContext)
         {
-            Contract.Requires<ArgumentNullException>(codeContext != null, "codeContext");
+            ContractSlim.Requires<ArgumentNullException>(codeContext != null, "codeContext");
             _codeContext = codeContext;
         }
 

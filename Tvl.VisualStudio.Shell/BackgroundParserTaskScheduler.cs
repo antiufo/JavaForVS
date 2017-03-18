@@ -33,8 +33,8 @@
 
         public BackgroundParserTaskScheduler(string name, int maximumConcurrencyLevel, IOutputWindowService outputWindowService)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(maximumConcurrencyLevel > 0);
-            Contract.Requires<ArgumentNullException>(outputWindowService != null, "outputWindowService");
+            ContractSlim.Requires<ArgumentOutOfRangeException>(maximumConcurrencyLevel > 0);
+            ContractSlim.Requires<ArgumentNullException>(outputWindowService != null, "outputWindowService");
 
             _blockingQueue = new BlockingCollection<Task>();
 

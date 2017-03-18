@@ -13,7 +13,7 @@
 
         public SnapshotSpanNavigateToTarget(ITextView textView, SnapshotSpan snapshotSpan)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
 
             this._textView = textView;
             this._snapshotSpan = snapshotSpan;

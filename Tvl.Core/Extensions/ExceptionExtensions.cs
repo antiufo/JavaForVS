@@ -16,7 +16,7 @@
 #pragma warning disable 618
         public static bool IsCritical(this Exception e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             if (e is AccessViolationException
                 || e is StackOverflowException
@@ -34,7 +34,7 @@
 
         public static void PreserveStackTrace(this Exception e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             _internalPreserveStackTrace(e);
         }

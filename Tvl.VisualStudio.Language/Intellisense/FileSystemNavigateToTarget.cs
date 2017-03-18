@@ -11,9 +11,9 @@
     {
         public FileSystemNavigateToTarget(string fileName, int line, int column, ServiceProvider serviceProvider)
         {
-            Contract.Requires<ArgumentNullException>(fileName != null, "fileName");
-            Contract.Requires<ArgumentNullException>(serviceProvider != null, "serviceProvider");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(fileName));
+            ContractSlim.Requires<ArgumentNullException>(fileName != null, "fileName");
+            ContractSlim.Requires<ArgumentNullException>(serviceProvider != null, "serviceProvider");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(fileName));
 
             FileName = fileName;
             Line = line;

@@ -10,7 +10,7 @@
     {
         public static string GetName(this IDebugThread2 thread)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
 
             string name;
             ErrorHandler.ThrowOnFailure(thread.GetName(out name));
@@ -19,7 +19,7 @@
 
         public static IDebugProgram2 GetProgram(this IDebugThread2 thread)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
 
             IDebugProgram2 program;
             ErrorHandler.ThrowOnFailure(thread.GetProgram(out program));
@@ -28,7 +28,7 @@
 
         public static uint GetThreadId(this IDebugThread2 thread)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
 
             uint threadId;
             ErrorHandler.ThrowOnFailure(thread.GetThreadId(out threadId));
@@ -37,7 +37,7 @@
 
         public static uint Resume(this IDebugThread2 thread)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
 
             uint suspendCount;
             ErrorHandler.ThrowOnFailure(thread.Resume(out suspendCount));
@@ -46,7 +46,7 @@
 
         public static uint Suspend(this IDebugThread2 thread)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
 
             uint suspendCount;
             ErrorHandler.ThrowOnFailure(thread.Suspend(out suspendCount));

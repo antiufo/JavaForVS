@@ -32,7 +32,7 @@
 
         public static IEnumerable<IVsWindowFrame> GetToolWindows(this IVsUIShell shell)
         {
-            Contract.Requires<ArgumentNullException>(shell != null, "shell");
+            ContractSlim.Requires<ArgumentNullException>(shell != null, "shell");
             Contract.Ensures(Contract.Result<IEnumerable<IVsWindowFrame>>() != null);
 
             IEnumWindowFrames frames;

@@ -19,10 +19,10 @@
 
         public JavaDebugExpression(JavaDebugExpressionContext context, CommonTree expression, string expressionText)
         {
-            Contract.Requires<ArgumentNullException>(context != null, "context");
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Requires<ArgumentNullException>(expressionText != null, "expressionText");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(expressionText));
+            ContractSlim.Requires<ArgumentNullException>(context != null, "context");
+            ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
+            ContractSlim.Requires<ArgumentNullException>(expressionText != null, "expressionText");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(expressionText));
 
             _context = context;
             _expression = expression;

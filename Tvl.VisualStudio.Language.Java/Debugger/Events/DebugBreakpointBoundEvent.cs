@@ -15,8 +15,8 @@
         public DebugBreakpointBoundEvent(enum_EVENTATTRIBUTES attributes, IDebugPendingBreakpoint2 pendingBreakpoint, IEnumDebugBoundBreakpoints2 boundBreakpoints)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(pendingBreakpoint != null, "pendingBreakpoint");
-            Contract.Requires<ArgumentNullException>(boundBreakpoints != null, "boundBreakpoints");
+            ContractSlim.Requires<ArgumentNullException>(pendingBreakpoint != null, "pendingBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(boundBreakpoints != null, "boundBreakpoints");
 
             _pendingBreakpoint = pendingBreakpoint;
             _boundBreakpoints = boundBreakpoints;

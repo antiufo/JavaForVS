@@ -9,7 +9,7 @@
     {
         public static enum_EVENTATTRIBUTES GetAttributes(this IDebugEvent2 debugEvent)
         {
-            Contract.Requires<ArgumentNullException>(debugEvent != null, "debugEvent");
+            ContractSlim.Requires<ArgumentNullException>(debugEvent != null, "debugEvent");
 
             uint attributes;
             ErrorHandler.ThrowOnFailure(debugEvent.GetAttributes(out attributes));

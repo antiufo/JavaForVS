@@ -16,7 +16,7 @@
         public DebugModuleLoadEvent(enum_EVENTATTRIBUTES attributes, IDebugModule2 module, string debugMessage, bool isLoading)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(module != null, "module");
+            ContractSlim.Requires<ArgumentNullException>(module != null, "module");
 
             _module = module;
             _debugMessage = debugMessage;

@@ -159,8 +159,8 @@
 
         public ReadOnlyCollection<IReferenceType> GetClassesByName(string className)
         {
-            Contract.Requires<ArgumentNullException>(className != null, "className");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(className));
+            ContractSlim.Requires<ArgumentNullException>(className != null, "className");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(className));
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IReferenceType>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<IReferenceType>>(), type => type != null && this.GetVirtualMachine().Equals(type.GetVirtualMachine())));
@@ -206,9 +206,9 @@
 
         public long[] GetInstanceCounts(IEnumerable<IReferenceType> referenceTypes)
         {
-            Contract.Requires<ArgumentNullException>(referenceTypes != null, "referenceTypes");
+            ContractSlim.Requires<ArgumentNullException>(referenceTypes != null, "referenceTypes");
 #if CONTRACTS_FORALL
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(referenceTypes, type => this.GetVirtualMachine().Equals(type.GetVirtualMachine())));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(referenceTypes, type => this.GetVirtualMachine().Equals(type.GetVirtualMachine())));
 #endif
             Contract.Ensures(Contract.Result<long[]>() != null);
 #if CONTRACTS_FORALL
@@ -306,10 +306,10 @@
 
         public void RedefineClasses(IEnumerable<KeyValuePair<IReferenceType, byte[]>> classes)
         {
-            Contract.Requires<ArgumentNullException>(classes != null, "classes");
+            ContractSlim.Requires<ArgumentNullException>(classes != null, "classes");
 #if CONTRACTS_FORALL
-            Contract.Requires<ArgumentException>(Contract.ForAll(classes, pair => pair.Key != null && pair.Value != null));
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(classes, pair => this.GetVirtualMachine().Equals(pair.Key.GetVirtualMachine())));
+            ContractSlim.Requires<ArgumentException>(Contract.ForAll(classes, pair => pair.Key != null && pair.Value != null));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(classes, pair => this.GetVirtualMachine().Equals(pair.Key.GetVirtualMachine())));
 #endif
 
             throw new NotImplementedException();
@@ -327,8 +327,8 @@
 
         public void SetDefaultStratum(string stratum)
         {
-            Contract.Requires<ArgumentNullException>(stratum != null, "stratum");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(stratum));
+            ContractSlim.Requires<ArgumentNullException>(stratum != null, "stratum");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(stratum));
 
             throw new NotImplementedException();
         }

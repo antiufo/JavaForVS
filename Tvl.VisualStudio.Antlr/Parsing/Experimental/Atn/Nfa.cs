@@ -2,7 +2,7 @@
 {
     using Tvl.VisualStudio.Language.Parsing.Collections;
     using ArgumentNullException = System.ArgumentNullException;
-    using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using Interval = Tvl.VisualStudio.Language.Parsing.Collections.Interval;
 
     public class Nfa
@@ -12,8 +12,8 @@
 
         public Nfa(State startState, State endState)
         {
-            Contract.Requires<ArgumentNullException>(startState != null, "startState");
-            Contract.Requires<ArgumentNullException>(endState != null, "endState");
+            ContractSlim.Requires<ArgumentNullException>(startState != null, "startState");
+            ContractSlim.Requires<ArgumentNullException>(endState != null, "endState");
 
             StartState = startState;
             EndState = endState;
@@ -21,8 +21,8 @@
 
         public static void BindRule(RuleBinding ruleBinding, Nfa body)
         {
-            Contract.Requires<ArgumentNullException>(ruleBinding != null, "ruleBinding");
-            Contract.Requires<ArgumentNullException>(body != null, "body");
+            ContractSlim.Requires<ArgumentNullException>(ruleBinding != null, "ruleBinding");
+            ContractSlim.Requires<ArgumentNullException>(body != null, "body");
 
             ruleBinding.StartState.AddTransition(new EpsilonTransition(body.StartState));
             body.EndState.AddTransition(new EpsilonTransition(ruleBinding.EndState));

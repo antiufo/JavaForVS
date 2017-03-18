@@ -19,9 +19,9 @@
 
         public DeterministicTrace(DeterministicState startState, DeterministicState endState, IEnumerable<DeterministicTraceTransition> transitions)
         {
-            Contract.Requires<ArgumentNullException>(startState != null, "startState");
-            Contract.Requires<ArgumentNullException>(endState != null, "endState");
-            Contract.Requires<ArgumentNullException>(transitions != null, "transitions");
+            ContractSlim.Requires<ArgumentNullException>(startState != null, "startState");
+            ContractSlim.Requires<ArgumentNullException>(endState != null, "endState");
+            ContractSlim.Requires<ArgumentNullException>(transitions != null, "transitions");
 
             _startState = startState;
             _endState = endState;

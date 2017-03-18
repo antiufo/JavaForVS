@@ -34,7 +34,7 @@
 
         public IStrongValueHandle<IArrayReference> CreateInstance(int length)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(length >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(length >= 0);
             Contract.Ensures(Contract.Result<IStrongValueHandle<IArrayReference>>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IStrongValueHandle<IArrayReference>>().GetVirtualMachine()));
             Contract.Ensures(Contract.Result<IStrongValueHandle<IArrayReference>>().Value.GetLength() >= 0);

@@ -67,8 +67,8 @@
 
         protected virtual IntellisenseController TryCreateIntellisenseController(ITextView textView, IList<ITextBuffer> subjectBuffers)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
-            Contract.Requires<ArgumentNullException>(subjectBuffers != null, "subjectBuffers");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(subjectBuffers != null, "subjectBuffers");
 
             IntellisenseController controller = new IntellisenseController(textView, this);
             return controller;

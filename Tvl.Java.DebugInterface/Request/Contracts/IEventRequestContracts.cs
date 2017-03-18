@@ -46,7 +46,7 @@
 
         public void AddCountFilter(int count)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(count >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(count >= 0);
 
             throw new NotImplementedException();
         }

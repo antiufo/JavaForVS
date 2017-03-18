@@ -17,8 +17,8 @@
 
         public static NameResolutionContext Aggregate(IntelliSenseCache cache, IEnumerable<NameResolutionContext> contexts)
         {
-            Contract.Requires<ArgumentNullException>(cache != null, "cache");
-            Contract.Requires<ArgumentNullException>(contexts != null, "contexts");
+            ContractSlim.Requires<ArgumentNullException>(cache != null, "cache");
+            ContractSlim.Requires<ArgumentNullException>(contexts != null, "contexts");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             return new AggregateContext(cache, contexts);
@@ -26,7 +26,7 @@
 
         public static NameResolutionContext Global(IntelliSenseCache cache)
         {
-            Contract.Requires<ArgumentNullException>(cache != null, "cache");
+            ContractSlim.Requires<ArgumentNullException>(cache != null, "cache");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             return new GlobalContext(cache);
@@ -34,8 +34,8 @@
 
         public static NameResolutionContext Import(IntelliSenseCache cache, CodeImportStatement importStatement)
         {
-            Contract.Requires<ArgumentNullException>(cache != null, "cache");
-            Contract.Requires<ArgumentNullException>(importStatement != null, "importStatement");
+            ContractSlim.Requires<ArgumentNullException>(cache != null, "cache");
+            ContractSlim.Requires<ArgumentNullException>(importStatement != null, "importStatement");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             return new ImportContext(cache, importStatement);
@@ -43,8 +43,8 @@
 
         public static NameResolutionContext Import(IntelliSenseCache cache, string path, bool importOnDemand, bool staticImport)
         {
-            Contract.Requires<ArgumentNullException>(path != null, "path");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(path));
+            ContractSlim.Requires<ArgumentNullException>(path != null, "path");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(path));
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             return new ImportContext(cache, path, importOnDemand, staticImport);
@@ -52,7 +52,7 @@
 
         public static NameResolutionContext StatementBlock(IntelliSenseCache cache, CodeStatementBlock statementBlock)
         {
-            Contract.Requires<ArgumentNullException>(statementBlock != null, "statementBlock");
+            ContractSlim.Requires<ArgumentNullException>(statementBlock != null, "statementBlock");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             throw new NotImplementedException();
@@ -60,7 +60,7 @@
 
         public static NameResolutionContext Package(IntelliSenseCache cache, CodePackage package)
         {
-            Contract.Requires<ArgumentNullException>(package != null, "package");
+            ContractSlim.Requires<ArgumentNullException>(package != null, "package");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             throw new NotImplementedException();
@@ -68,7 +68,7 @@
 
         public static NameResolutionContext Type(IntelliSenseCache cache, CodeType type)
         {
-            Contract.Requires<ArgumentNullException>(type != null, "type");
+            ContractSlim.Requires<ArgumentNullException>(type != null, "type");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             return new TypeContext(cache, type);
@@ -77,7 +77,7 @@
 
         public static NameResolutionContext TypeStatic(IntelliSenseCache cache, CodeType type)
         {
-            Contract.Requires<ArgumentNullException>(type != null, "type");
+            ContractSlim.Requires<ArgumentNullException>(type != null, "type");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             throw new NotImplementedException();
@@ -85,7 +85,7 @@
 
         public static NameResolutionContext TypeInstance(IntelliSenseCache cache, CodeType type)
         {
-            Contract.Requires<ArgumentNullException>(type != null, "type");
+            ContractSlim.Requires<ArgumentNullException>(type != null, "type");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             throw new NotImplementedException();
@@ -93,7 +93,7 @@
 
         protected static NameResolutionContext Empty(NameResolutionContext parentContext, string name, string @operator, bool caseSensitive)
         {
-            Contract.Requires<ArgumentNullException>(parentContext != null, "parentContext");
+            ContractSlim.Requires<ArgumentNullException>(parentContext != null, "parentContext");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             throw new NotImplementedException();
@@ -101,7 +101,7 @@
 
         protected static NameResolutionContext Error(NameResolutionContext parentContext, string name, string @operator, bool caseSensitive)
         {
-            Contract.Requires<ArgumentNullException>(parentContext != null, "parentContext");
+            ContractSlim.Requires<ArgumentNullException>(parentContext != null, "parentContext");
             Contract.Ensures(Contract.Result<NameResolutionContext>() != null);
 
             throw new NotImplementedException();

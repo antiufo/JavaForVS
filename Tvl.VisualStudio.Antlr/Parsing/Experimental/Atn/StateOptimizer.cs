@@ -18,7 +18,7 @@
 
         public StateOptimizer(IEnumerable<State> reachableStates)
         {
-            Contract.Requires<ArgumentNullException>(reachableStates != null, "reachableStates");
+            ContractSlim.Requires<ArgumentNullException>(reachableStates != null, "reachableStates");
 
             _reachableStates = new HashSet<State>(reachableStates, ObjectReferenceEqualityComparer<State>.Default);
             _reachableTransitions = new HashSet<Transition>(ObjectReferenceEqualityComparer<Transition>.Default);
@@ -75,7 +75,7 @@
 
         public void Optimize(IEnumerable<State> ruleStartStates)
         {
-            Contract.Requires<ArgumentNullException>(ruleStartStates != null, "ruleStartStates");
+            ContractSlim.Requires<ArgumentNullException>(ruleStartStates != null, "ruleStartStates");
 
             foreach (var state in _reachableStates)
                 state.RemoveExtraEpsilonTransitions(this, ruleStartStates.Contains(state));
@@ -132,7 +132,7 @@
 
         internal void AddTransition(Transition transition)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
 
             AddReachableTransition(transition);
 
@@ -167,7 +167,7 @@
 
         internal void RemoveTransition(Transition transition)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
 
             RemoveReachableTransition(transition);
 
@@ -190,7 +190,7 @@
 
         internal IEnumerable<PushContextTransition> GetPushContextTransitions(PopContextTransition popContextTransition)
         {
-            Contract.Requires<ArgumentNullException>(popContextTransition != null, "popContextTransition");
+            ContractSlim.Requires<ArgumentNullException>(popContextTransition != null, "popContextTransition");
             Contract.Ensures(Contract.Result<IEnumerable<PushContextTransition>>() != null);
             return GetPushContextTransitions(popContextTransition.ContextIdentifiers.Last());
         }
@@ -208,7 +208,7 @@
 
         internal IEnumerable<PopContextTransition> GetPopContextTransitions(PushContextTransition pushContextTransition)
         {
-            Contract.Requires<ArgumentNullException>(pushContextTransition != null, "pushContextTransition");
+            ContractSlim.Requires<ArgumentNullException>(pushContextTransition != null, "pushContextTransition");
             Contract.Ensures(Contract.Result<IEnumerable<PopContextTransition>>() != null);
             return GetPopContextTransitions(pushContextTransition.ContextIdentifiers[0]);
         }

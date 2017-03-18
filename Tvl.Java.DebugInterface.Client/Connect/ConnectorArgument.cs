@@ -13,7 +13,7 @@
 
         public ConnectorArgument(IConnectorArgument descriptor)
         {
-            Contract.Requires<ArgumentNullException>(descriptor != null, "descriptor");
+            ContractSlim.Requires<ArgumentNullException>(descriptor != null, "descriptor");
 
             _name = descriptor.Name;
             _label = descriptor.Label;

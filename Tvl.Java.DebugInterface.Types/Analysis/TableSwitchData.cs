@@ -14,8 +14,8 @@
         public TableSwitchData(int defaultValue, int lowValue, int highValue, IEnumerable<int> offsets)
             : base(defaultValue)
         {
-            Contract.Requires<ArgumentNullException>(offsets != null, "offsets");
-            Contract.Requires<ArgumentException>(highValue >= lowValue);
+            ContractSlim.Requires<ArgumentNullException>(offsets != null, "offsets");
+            ContractSlim.Requires<ArgumentException>(highValue >= lowValue);
 
             _lowValue = lowValue;
             _highValue = highValue;

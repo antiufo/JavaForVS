@@ -27,8 +27,8 @@
 
         public static string DecodeTypeName(string signature)
         {
-            Contract.Requires<ArgumentNullException>(signature != null, "signature");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
+            ContractSlim.Requires<ArgumentNullException>(signature != null, "signature");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
 
             switch (signature[0])
             {

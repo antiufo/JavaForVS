@@ -13,7 +13,7 @@
 
         internal VirtualMachineEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request)
         {
-            Contract.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
+            ContractSlim.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
 
             _virtualMachine = virtualMachine;
             _suspendPolicy = suspendPolicy;

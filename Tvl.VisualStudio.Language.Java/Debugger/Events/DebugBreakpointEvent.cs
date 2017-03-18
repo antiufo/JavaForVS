@@ -14,7 +14,7 @@
         public DebugBreakpointEvent(enum_EVENTATTRIBUTES attributes, IEnumDebugBoundBreakpoints2 breakpoints)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(breakpoints != null, "breakpoints");
+            ContractSlim.Requires<ArgumentNullException>(breakpoints != null, "breakpoints");
             _breakpoints = breakpoints;
         }
 

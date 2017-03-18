@@ -14,8 +14,8 @@
         public ContextTransition(State targetState, IEnumerable<int> contextIdentifiers)
             : base(targetState)
         {
-            Contract.Requires<ArgumentNullException>(contextIdentifiers != null, "contextIdentifiers");
-            Contract.Requires<ArgumentException>(contextIdentifiers.Any());
+            ContractSlim.Requires<ArgumentNullException>(contextIdentifiers != null, "contextIdentifiers");
+            ContractSlim.Requires<ArgumentException>(contextIdentifiers.Any());
 
             _contextIdentifiers = new ReadOnlyCollection<int>(contextIdentifiers.ToArray());
         }
@@ -23,8 +23,8 @@
         public ContextTransition(State targetState, params int[] contextIdentifiers)
             : base(targetState)
         {
-            Contract.Requires<ArgumentNullException>(contextIdentifiers != null, "contextIdentifiers");
-            Contract.Requires<ArgumentException>(contextIdentifiers.Length > 0);
+            ContractSlim.Requires<ArgumentNullException>(contextIdentifiers != null, "contextIdentifiers");
+            ContractSlim.Requires<ArgumentException>(contextIdentifiers.Length > 0);
 
             _contextIdentifiers = new ReadOnlyCollection<int>(contextIdentifiers.CloneArray());
         }

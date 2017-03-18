@@ -16,7 +16,7 @@
             : base(virtualMachine)
         {
             Contract.Requires(virtualMachine != null);
-            Contract.Requires<ArgumentNullException>(method != null, "method");
+            ContractSlim.Requires<ArgumentNullException>(method != null, "method");
 
             _method = method;
             _codeIndex = codeIndex;

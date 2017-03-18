@@ -23,8 +23,8 @@
 
         public JavaDebugStackFrame(JavaDebugThread thread, IStackFrame stackFrame)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
-            Contract.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
 
             _thread = thread;
             _stackFrame = stackFrame;
@@ -531,7 +531,7 @@
 
             public StackFrameDebugProperty(JavaDebugStackFrame stackFrame)
             {
-                Contract.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
+                ContractSlim.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
                 _stackFrame = stackFrame;
             }
 

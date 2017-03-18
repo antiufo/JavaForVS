@@ -12,7 +12,7 @@
 
         public BreakpointLocationCodeFunctionOffset(BP_LOCATION location, bool releaseComObjects)
         {
-            Contract.Requires<ArgumentException>((enum_BP_LOCATION_TYPE)location.bpLocationType == enum_BP_LOCATION_TYPE.BPLT_CODE_FUNC_OFFSET);
+            ContractSlim.Requires<ArgumentException>((enum_BP_LOCATION_TYPE)location.bpLocationType == enum_BP_LOCATION_TYPE.BPLT_CODE_FUNC_OFFSET);
 
             try
             {

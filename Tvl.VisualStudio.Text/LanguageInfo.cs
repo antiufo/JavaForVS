@@ -22,7 +22,7 @@
 
         public LanguageInfo(SVsServiceProvider serviceProvider, Guid languageGuid)
         {
-            Contract.Requires<ArgumentNullException>(serviceProvider != null, "serviceProvider");
+            ContractSlim.Requires<ArgumentNullException>(serviceProvider != null, "serviceProvider");
 
             _serviceProvider = serviceProvider;
             _languageGuid = languageGuid;
@@ -85,7 +85,7 @@
 
         public virtual int GetColorizer(IVsTextLines buffer, out IVsColorizer colorizer)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
 
             colorizer = null;
             return VSConstants.E_FAIL;
@@ -106,7 +106,7 @@
         /// <returns>If the method succeeds, it returns S_OK. If it fails, it returns an error code.</returns>
         public virtual int GetLanguageID(IVsTextBuffer buffer, int line, int col, out Guid languageId)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
 
             languageId = LanguageGuid;
             return VSConstants.S_OK;
@@ -122,8 +122,8 @@
         [Obsolete]
         public virtual int GetLocationOfName(string name, out string pbstrMkDoc, TextSpan[] spans)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             pbstrMkDoc = null;
             return VSConstants.E_NOTIMPL;
@@ -146,7 +146,7 @@
         /// <returns>If the method succeeds, it returns S_OK. If it fails, it returns an error code.</returns>
         public virtual int GetNameOfLocation(IVsTextBuffer buffer, int line, int col, out string name, out int lineOffset)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
 
             name = null;
             lineOffset = 0;
@@ -172,7 +172,7 @@
         /// <returns>If the method succeeds, it returns S_OK. If it fails, it returns an error code.</returns>
         public virtual int GetProximityExpressions(IVsTextBuffer buffer, int line, int col, int cLines, out IVsEnumBSTR expressions)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
 
             expressions = null;
             return VSConstants.S_FALSE;
@@ -192,7 +192,7 @@
         /// If the location does not contain mapped code, returns S_FALSE. Otherwise, returns an error code.</returns>
         public virtual int IsMappedLocation(IVsTextBuffer buffer, int line, int col)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
             return VSConstants.S_FALSE;
         }
 
@@ -208,8 +208,8 @@
         /// <returns>If the method succeeds, it returns S_OK. If it fails, it returns an error code.</returns>
         public virtual int ResolveName(string name, RESOLVENAMEFLAGS flags, out IVsEnumDebugName names)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             names = null;
             return VSConstants.E_NOTIMPL;
@@ -237,9 +237,9 @@
         /// <returns>If the method succeeds, it returns S_OK. If it fails, it returns an error code.</returns>
         public virtual int ValidateBreakpointLocation(IVsTextBuffer buffer, int line, int col, TextSpan[] pCodeSpan)
         {
-            Contract.Requires<ArgumentNullException>(buffer != null, "buffer");
-            Contract.Requires<ArgumentNullException>(pCodeSpan != null, "pCodeSpan");
-            Contract.Requires<ArgumentException>(pCodeSpan.Length > 0);
+            ContractSlim.Requires<ArgumentNullException>(buffer != null, "buffer");
+            ContractSlim.Requires<ArgumentNullException>(pCodeSpan != null, "pCodeSpan");
+            ContractSlim.Requires<ArgumentException>(pCodeSpan.Length > 0);
 
             return VSConstants.E_NOTIMPL;
         }
@@ -363,8 +363,8 @@
 
         protected virtual IVsCodeWindowManager GetCodeWindowManager(IVsCodeWindow codeWindow, ITextBuffer textBuffer)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
             Contract.Ensures(Contract.Result<IVsCodeWindowManager>() != null);
 
             return textBuffer.Properties.GetOrCreateSingletonProperty<CodeWindowManager>(() => new CodeWindowManager(codeWindow, ServiceProvider, LanguagePreferences));

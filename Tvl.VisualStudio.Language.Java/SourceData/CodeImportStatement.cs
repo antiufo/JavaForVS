@@ -27,7 +27,7 @@
 
             internal set
             {
-                Contract.Requires<InvalidOperationException>(!IsFrozen);
+                ContractSlim.Requires<InvalidOperationException>(!IsFrozen);
                 _importOnDemand = value;
             }
         }
@@ -41,7 +41,7 @@
 
             internal set
             {
-                Contract.Requires<InvalidOperationException>(!IsFrozen);
+                ContractSlim.Requires<InvalidOperationException>(!IsFrozen);
                 _staticImport = value;
             }
         }

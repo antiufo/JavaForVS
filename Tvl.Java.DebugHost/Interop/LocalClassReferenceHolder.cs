@@ -10,7 +10,7 @@
 
         public LocalClassReferenceHolder(JniEnvironment nativeEnvironment, jclass reference)
         {
-            Contract.Requires<ArgumentNullException>(nativeEnvironment != null, "nativeEnvironment");
+            ContractSlim.Requires<ArgumentNullException>(nativeEnvironment != null, "nativeEnvironment");
 
             _nativeEnvironment = nativeEnvironment;
             _reference = (jclass)_nativeEnvironment.NewLocalReference(reference);

@@ -14,7 +14,7 @@
         public DebugPropertyDestroyEvent(enum_EVENTATTRIBUTES attributes, IDebugProperty2 property)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(property != null, "property");
+            ContractSlim.Requires<ArgumentNullException>(property != null, "property");
             _property = property;
         }
 

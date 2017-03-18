@@ -13,8 +13,8 @@
         internal ClassPrepareEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request, ThreadReference thread, string signature, ReferenceType type)
             : base(virtualMachine, suspendPolicy, request, thread)
         {
-            Contract.Requires<ArgumentNullException>(signature != null, "signature");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
+            ContractSlim.Requires<ArgumentNullException>(signature != null, "signature");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
 
             _signature = signature;
             _type = type;

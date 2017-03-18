@@ -19,7 +19,7 @@
 
         public PrimitiveTypes(VirtualMachine virtualMachine)
         {
-            Contract.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
+            ContractSlim.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
 
             _boolean = new BooleanType(virtualMachine);
             _byte = new ByteType(virtualMachine);

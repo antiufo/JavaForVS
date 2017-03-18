@@ -33,7 +33,7 @@
 
         public AntlrTaggerBaseOld(ITextBuffer textBuffer, IEqualityComparer<TState> stateComparer = null, ClassifierOptions options = ClassifierOptions.None)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
 
             _textBuffer = textBuffer;
             _stateComparer = stateComparer ?? EqualityComparer<TState>.Default;
@@ -301,7 +301,7 @@
 
         protected virtual void OnTagsChanged(SnapshotSpanEventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             var t = TagsChanged;
             if (t != null)
@@ -310,8 +310,8 @@
 
         protected virtual IEnumerable<ITagSpan<TTag>> GetTagSpansForToken(IToken token, ITextSnapshot snapshot)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
-            Contract.Requires<ArgumentNullException>(snapshot != null, "snapshot");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(snapshot != null, "snapshot");
             Contract.Ensures(Contract.Result<IEnumerable<ITagSpan<TTag>>>() != null);
 
             TTag tag;
@@ -326,7 +326,7 @@
 
         protected virtual bool TryClassifyToken(IToken token, out TTag tag)
         {
-            Contract.Requires<ArgumentNullException>(token != null, "token");
+            ContractSlim.Requires<ArgumentNullException>(token != null, "token");
             Contract.Ensures(!Contract.Result<bool>() || Contract.ValueAtReturn(out tag) != null);
 
             tag = default(TTag);

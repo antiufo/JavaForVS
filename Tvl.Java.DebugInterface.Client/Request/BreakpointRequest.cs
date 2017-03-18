@@ -12,7 +12,7 @@
             : base(virtualMachine)
         {
             Contract.Requires(virtualMachine != null);
-            Contract.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
 
             _location = location;
 

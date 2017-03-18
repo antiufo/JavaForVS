@@ -28,7 +28,7 @@
 
         public DebugProtocolService(JavaVM virtualMachine)
         {
-            Contract.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
+            ContractSlim.Requires<ArgumentNullException>(virtualMachine != null, "virtualMachine");
 
             _virtualMachine = virtualMachine;
             _eventProcessor = new EventProcessor(this);

@@ -25,7 +25,7 @@
 
         public JavaDebugDisassemblyStream(JavaDebugCodeContext executionContext)
         {
-            Contract.Requires<ArgumentNullException>(executionContext != null, "executionContext");
+            ContractSlim.Requires<ArgumentNullException>(executionContext != null, "executionContext");
 
             _executionContext = executionContext;
             _bytecode = _executionContext.Location.GetMethod().GetBytecodes();

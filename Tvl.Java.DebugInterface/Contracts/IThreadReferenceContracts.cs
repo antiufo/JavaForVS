@@ -19,15 +19,15 @@
 
         public void ForceEarlyReturn(IValue returnValue)
         {
-            Contract.Requires<ArgumentNullException>(returnValue != null, "returnValue");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(returnValue.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(returnValue != null, "returnValue");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(returnValue.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }
 
         public IStackFrame GetFrame(int index)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
             Contract.Ensures(Contract.Result<IStackFrame>() != null);
             Contract.Ensures(this.GetVirtualMachine().Equals(Contract.Result<IStackFrame>().GetVirtualMachine()));
 
@@ -53,9 +53,9 @@
 
         public ReadOnlyCollection<IStackFrame> GetFrames(int start, int length)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(start >= 0);
-            Contract.Requires<ArgumentOutOfRangeException>(length >= 0);
-            Contract.Requires<ArgumentException>(start <= GetFrameCount() - length);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(start >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(length >= 0);
+            ContractSlim.Requires<ArgumentException>(start <= GetFrameCount() - length);
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IStackFrame>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<IStackFrame>>(), frame => frame != null && this.GetVirtualMachine().Equals(frame.GetVirtualMachine())));
@@ -108,8 +108,8 @@
 
         public void PopFrames(IStackFrame frame)
         {
-            Contract.Requires<ArgumentNullException>(frame != null, "frame");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(frame.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(frame != null, "frame");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(frame.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }
@@ -126,8 +126,8 @@
 
         public void Stop(IObjectReference throwable)
         {
-            Contract.Requires<ArgumentNullException>(throwable != null, "throwable");
-            Contract.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(throwable.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentNullException>(throwable != null, "throwable");
+            ContractSlim.Requires<VirtualMachineMismatchException>(this.GetVirtualMachine().Equals(throwable.GetVirtualMachine()));
 
             throw new NotImplementedException();
         }

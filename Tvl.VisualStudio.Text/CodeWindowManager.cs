@@ -19,9 +19,9 @@
 
         public CodeWindowManager(IVsCodeWindow codeWindow, SVsServiceProvider serviceProvider, LanguagePreferences languagePreferences)
         {
-            Contract.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
-            Contract.Requires<ArgumentNullException>(serviceProvider != null, "serviceProvider");
-            Contract.Requires<ArgumentNullException>(languagePreferences != null, "languagePreferences");
+            ContractSlim.Requires<ArgumentNullException>(codeWindow != null, "codeWindow");
+            ContractSlim.Requires<ArgumentNullException>(serviceProvider != null, "serviceProvider");
+            ContractSlim.Requires<ArgumentNullException>(languagePreferences != null, "languagePreferences");
 
             _codeWindow = codeWindow;
             _serviceProvider = serviceProvider;
@@ -74,7 +74,7 @@
 
         public virtual int OnNewView(IVsTextView view)
         {
-            Contract.Requires<ArgumentNullException>(view != null, "view");
+            ContractSlim.Requires<ArgumentNullException>(view != null, "view");
 
             return VSConstants.S_OK;
         }
@@ -115,8 +115,8 @@
 
         protected virtual int AddDropdownBar(int comboBoxCount, IVsDropdownBarClient client)
         {
-            Contract.Requires<ArgumentNullException>(client != null, "client");
-            Contract.Requires<ArgumentOutOfRangeException>(comboBoxCount > 0);
+            ContractSlim.Requires<ArgumentNullException>(client != null, "client");
+            ContractSlim.Requires<ArgumentOutOfRangeException>(comboBoxCount > 0);
 
             IVsDropdownBarManager manager = CodeWindow as IVsDropdownBarManager;
             if (manager == null)
@@ -159,7 +159,7 @@
 
         protected virtual void HandleLanguagePreferencesChanged(object sender, EventArgs e)
         {
-            Contract.Requires<ArgumentNullException>(e != null, "e");
+            ContractSlim.Requires<ArgumentNullException>(e != null, "e");
 
             int comboBoxCount;
             IVsDropdownBarClient client;

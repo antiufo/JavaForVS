@@ -17,7 +17,7 @@
         public BraceLevelTracker(ITextBuffer textBuffer, ClassifierOptions options)
             : base(textBuffer)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
         }
 
         protected override BraceLevelAnchorState GetStartState()

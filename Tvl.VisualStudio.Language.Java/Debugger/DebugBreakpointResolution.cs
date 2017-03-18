@@ -16,8 +16,8 @@
 
         public DebugBreakpointResolution(IDebugProgram2 program, IDebugThread2 thread, enum_BP_TYPE breakpointType, BreakpointResolutionLocation location)
         {
-            Contract.Requires<ArgumentNullException>(program != null, "program");
-            Contract.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<ArgumentNullException>(program != null, "program");
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
 
             _program = program;
             _thread = thread;

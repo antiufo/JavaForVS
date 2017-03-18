@@ -27,9 +27,9 @@
 
         public Commenter(ITextView textView, ITextUndoHistoryRegistry textUndoHistoryRegistry, IEnumerable<CommentFormat> commentFormats)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
-            Contract.Requires<ArgumentNullException>(textUndoHistoryRegistry != null, "textUndoHistoryRegistry");
-            Contract.Requires<ArgumentNullException>(commentFormats != null, "commentFormats");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(textUndoHistoryRegistry != null, "textUndoHistoryRegistry");
+            ContractSlim.Requires<ArgumentNullException>(commentFormats != null, "commentFormats");
 
             this._textView = textView;
             this._textUndoHistoryRegistry = textUndoHistoryRegistry;
@@ -196,7 +196,7 @@
 
         protected virtual SnapshotSpan CommentSpan(SnapshotSpan span, ITextEdit edit)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
 
             span = span.TranslateTo(edit.Snapshot, SpanTrackingMode.EdgeExclusive);
 
@@ -240,8 +240,8 @@
 
         protected virtual SnapshotSpan CommentLines(SnapshotSpan span, ITextEdit edit, LineCommentFormat format)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
-            Contract.Requires<ArgumentNullException>(format != null, "format");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(format != null, "format");
 
             /*
              * Rules for line comments:
@@ -276,8 +276,8 @@
 
         protected virtual SnapshotSpan CommentBlock(SnapshotSpan span, ITextEdit edit, BlockCommentFormat format)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
-            Contract.Requires<ArgumentNullException>(format != null, "format");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(format != null, "format");
 
             //sp. case no selection
             if (span.IsEmpty)
@@ -295,7 +295,7 @@
 
         protected virtual SnapshotSpan UncommentSpan(SnapshotSpan span, ITextEdit edit)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
 
             span = span.TranslateTo(edit.Snapshot, SpanTrackingMode.EdgeExclusive);
             bool useLineComments = true;
@@ -325,8 +325,8 @@
 
         protected virtual SnapshotSpan UncommentLines(SnapshotSpan span, ITextEdit edit, ReadOnlyCollection<LineCommentFormat> formats)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
-            Contract.Requires<ArgumentNullException>(formats != null, "formats");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(formats != null, "formats");
             Contract.Requires(Contract.ForAll(formats, i => i != null));
 
             if (span.End.GetContainingLine().LineNumber > span.Start.GetContainingLine().LineNumber && span.End == span.End.GetContainingLine().Start)
@@ -362,8 +362,8 @@
 
         protected virtual bool TryUncommentBlock(SnapshotSpan span, ITextEdit edit, ReadOnlyCollection<BlockCommentFormat> formats, out SnapshotSpan result)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
-            Contract.Requires<ArgumentNullException>(formats != null, "formats");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(formats != null, "formats");
             Contract.Requires(Contract.ForAll(formats, i => i != null));
 
             foreach (var format in formats)
@@ -378,8 +378,8 @@
 
         protected virtual bool TryUncommentBlock(SnapshotSpan span, ITextEdit edit, BlockCommentFormat format, out SnapshotSpan result)
         {
-            Contract.Requires<ArgumentNullException>(edit != null, "edit");
-            Contract.Requires<ArgumentNullException>(format != null, "format");
+            ContractSlim.Requires<ArgumentNullException>(edit != null, "edit");
+            ContractSlim.Requires<ArgumentNullException>(format != null, "format");
 
             string blockStart = format.StartText;
             string blockEnd = format.EndText;
@@ -435,7 +435,7 @@
 
         protected static int ScanToNonWhitespaceChar(ITextSnapshotLine line)
         {
-            Contract.Requires<ArgumentNullException>(line != null, "line");
+            ContractSlim.Requires<ArgumentNullException>(line != null, "line");
 
             string text = line.GetText();
             int len = text.Length;

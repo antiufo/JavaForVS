@@ -14,8 +14,8 @@
 
         public DebugErrorBreakpoint(IDebugPendingBreakpoint2 pendingBreakpoint, IDebugErrorBreakpointResolution2 resolution)
         {
-            Contract.Requires<ArgumentNullException>(pendingBreakpoint != null, "pendingBreakpoint");
-            Contract.Requires<ArgumentNullException>(resolution != null, "resolution");
+            ContractSlim.Requires<ArgumentNullException>(pendingBreakpoint != null, "pendingBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(resolution != null, "resolution");
 
             _pendingBreakpoint = pendingBreakpoint;
             _resolution = resolution;

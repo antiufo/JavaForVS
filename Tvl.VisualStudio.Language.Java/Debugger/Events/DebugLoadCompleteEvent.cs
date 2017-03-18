@@ -15,7 +15,7 @@
         public DebugLoadCompleteEvent(enum_EVENTATTRIBUTES attributes)
             : base(attributes)
         {
-            Contract.Requires<ArgumentException>((attributes & enum_EVENTATTRIBUTES.EVENT_STOPPING) != 0);
+            ContractSlim.Requires<ArgumentException>((attributes & enum_EVENTATTRIBUTES.EVENT_STOPPING) != 0);
         }
 
         public override Guid EventGuid

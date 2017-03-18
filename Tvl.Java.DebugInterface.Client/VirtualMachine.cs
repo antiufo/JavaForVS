@@ -44,7 +44,7 @@
 
         public VirtualMachine(string[] sourcePaths, bool jdwp)
         {
-            Contract.Requires<ArgumentNullException>(sourcePaths != null, "sourcePaths");
+            ContractSlim.Requires<ArgumentNullException>(sourcePaths != null, "sourcePaths");
 
             _primitiveTypes = new PrimitiveTypes(this);
             _eventRequestManager = new EventRequestManager(this);
@@ -921,8 +921,8 @@
 
         internal IType FindType(string signature)
         {
-            Contract.Requires<ArgumentNullException>(signature != null, "signature");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
+            ContractSlim.Requires<ArgumentNullException>(signature != null, "signature");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(signature));
 
             switch (signature[0])
             {

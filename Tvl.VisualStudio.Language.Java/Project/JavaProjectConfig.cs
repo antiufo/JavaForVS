@@ -96,10 +96,10 @@
 
         private static bool TryGetJavaHome(string vendor, string installation, RegistryView registryView, out string javaHome)
         {
-            Contract.Requires<ArgumentNullException>(vendor != null, "vendor");
-            Contract.Requires<ArgumentNullException>(installation != null, "installation");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(vendor));
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(installation));
+            ContractSlim.Requires<ArgumentNullException>(vendor != null, "vendor");
+            ContractSlim.Requires<ArgumentNullException>(installation != null, "installation");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(vendor));
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(installation));
 
             javaHome = null;
 

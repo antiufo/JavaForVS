@@ -17,8 +17,8 @@
         public JarReferenceNode(ProjectNode root, ProjectElement element)
             : base(root, element)
         {
-            Contract.Requires<ArgumentNullException>(root != null, "root");
-            Contract.Requires<ArgumentNullException>(element != null, "element");
+            ContractSlim.Requires<ArgumentNullException>(root != null, "root");
+            ContractSlim.Requires<ArgumentNullException>(element != null, "element");
 
             _projectRelativeFilePath = element.Item.EvaluatedInclude;
             ProjectManager.ItemIdMap.UpdateCanonicalName(this);
@@ -27,9 +27,9 @@
         public JarReferenceNode(ProjectNode root, string fileName)
             : base(root)
         {
-            Contract.Requires<ArgumentNullException>(root != null, "root");
-            Contract.Requires<ArgumentNullException>(fileName != null, "fileName");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(fileName));
+            ContractSlim.Requires<ArgumentNullException>(root != null, "root");
+            ContractSlim.Requires<ArgumentNullException>(fileName != null, "fileName");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(fileName));
 
             _projectRelativeFilePath = fileName;
         }

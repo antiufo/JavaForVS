@@ -15,7 +15,7 @@
 
         public DeferredPeriodicOperation(Action action, TimeSpan deferPeriod, TimeSpan minimumPeriod, bool requiresInitialOperation)
         {
-            Contract.Requires<ArgumentNullException>(action != null, "action");
+            ContractSlim.Requires<ArgumentNullException>(action != null, "action");
 
             this._action = action;
             this._lastDefer = DateTimeOffset.MinValue;

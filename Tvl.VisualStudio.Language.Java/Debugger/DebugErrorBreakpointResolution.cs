@@ -18,11 +18,11 @@
 
         public DebugErrorBreakpointResolution(IDebugProgram2 program, IDebugThread2 thread, enum_BP_TYPE breakpointType, BreakpointResolutionLocation location, enum_BP_ERROR_TYPE errorType, string message)
         {
-            //Contract.Requires<ArgumentNullException>(program != null, "program");
-            //Contract.Requires<ArgumentNullException>(thread != null, "thread");
-            Contract.Requires<ArgumentNullException>(message != null, "message");
-            Contract.Requires<ArgumentNullException>(location != null, "location");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(message));
+            //ContractSlim.Requires<ArgumentNullException>(program != null, "program");
+            //ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(message != null, "message");
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(message));
 
             _program = program;
             _thread = thread;

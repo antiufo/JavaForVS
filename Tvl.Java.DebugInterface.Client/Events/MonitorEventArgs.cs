@@ -12,7 +12,7 @@
         internal MonitorEventArgs(VirtualMachine virtualMachine, SuspendPolicy suspendPolicy, EventRequest request, ThreadReference thread, Location location, IObjectReference @object)
             : base(virtualMachine, suspendPolicy, request, thread, location)
         {
-            Contract.Requires<ArgumentNullException>(@object != null, "object");
+            ContractSlim.Requires<ArgumentNullException>(@object != null, "object");
 
             _object = @object;
         }

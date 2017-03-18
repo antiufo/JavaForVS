@@ -17,7 +17,7 @@
 
         public JavaDebugPendingBreakpoint(IDebugBreakpointRequest2 request)
         {
-            Contract.Requires<ArgumentNullException>(request != null, "request");
+            ContractSlim.Requires<ArgumentNullException>(request != null, "request");
 
             _request = request;
         }

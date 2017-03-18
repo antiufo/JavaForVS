@@ -37,10 +37,10 @@
 
         public JavaDebugLocationPendingBreakpoint(JavaDebugEngine engine, BreakpointRequestInfo requestInfo)
         {
-            Contract.Requires<ArgumentNullException>(engine != null, "engine");
-            Contract.Requires<ArgumentNullException>(requestInfo != null, "requestInfo");
-            Contract.Requires<ArgumentException>(requestInfo.Location != null);
-            Contract.Requires<ArgumentException>(requestInfo.Location.LocationType == enum_BP_LOCATION_TYPE.BPLT_CODE_FILE_LINE);
+            ContractSlim.Requires<ArgumentNullException>(engine != null, "engine");
+            ContractSlim.Requires<ArgumentNullException>(requestInfo != null, "requestInfo");
+            ContractSlim.Requires<ArgumentException>(requestInfo.Location != null);
+            ContractSlim.Requires<ArgumentException>(requestInfo.Location.LocationType == enum_BP_LOCATION_TYPE.BPLT_CODE_FILE_LINE);
 
             _engine = engine;
             _requestInfo = requestInfo;

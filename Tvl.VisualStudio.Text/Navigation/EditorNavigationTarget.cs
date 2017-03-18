@@ -20,8 +20,8 @@
 
         public EditorNavigationTarget(string name, IEditorNavigationType editorNavigationType, SnapshotSpan span, SnapshotSpan seek, ImageSource glyph = null, NavigationTargetStyle style = NavigationTargetStyle.None)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentNullException>(editorNavigationType != null, "editorNavigationType");
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentNullException>(editorNavigationType != null, "editorNavigationType");
 
             this._name = name;
             this._editorNavigationType = editorNavigationType;

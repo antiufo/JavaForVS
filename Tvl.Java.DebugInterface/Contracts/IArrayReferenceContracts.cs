@@ -11,8 +11,8 @@
 
         public IValue GetValue(int index)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-            Contract.Requires<ArgumentException>(index < GetLength());
+            ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+            ContractSlim.Requires<ArgumentException>(index < GetLength());
             Contract.Ensures(Contract.Result<IValue>() == null || this.GetVirtualMachine().Equals(Contract.Result<IValue>().GetVirtualMachine()));
 
             throw new NotImplementedException();
@@ -31,9 +31,9 @@
 
         public ReadOnlyCollection<IValue> GetValues(int index, int length)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-            Contract.Requires<ArgumentOutOfRangeException>(length >= 0);
-            Contract.Requires<ArgumentException>(index <= GetLength() - length);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(length >= 0);
+            ContractSlim.Requires<ArgumentException>(index <= GetLength() - length);
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IValue>>() != null);
             Contract.Ensures(Contract.Result<ReadOnlyCollection<IValue>>().Count == length);
 #if CONTRACTS_FORALL
@@ -52,33 +52,33 @@
 
         public void SetValue(int index, IValue value)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-            Contract.Requires<VirtualMachineMismatchException>(value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine()));
-            Contract.Requires<ArgumentException>(index < GetLength());
+            ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+            ContractSlim.Requires<VirtualMachineMismatchException>(value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine()));
+            ContractSlim.Requires<ArgumentException>(index < GetLength());
 
             throw new NotImplementedException();
         }
 
         public void SetValues(int index, IValue[] values, int sourceIndex, int length)
         {
-            Contract.Requires<ArgumentNullException>(values != null, "values");
+            ContractSlim.Requires<ArgumentNullException>(values != null, "values");
 #if CONTRACTS_FORALL
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(values, value => value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine())));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(values, value => value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine())));
 #endif
-            Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-            Contract.Requires<ArgumentOutOfRangeException>(sourceIndex >= 0);
-            Contract.Requires<ArgumentException>(index <= GetLength() - length);
-            Contract.Requires<ArgumentException>(sourceIndex <= values.Length - length);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(sourceIndex >= 0);
+            ContractSlim.Requires<ArgumentException>(index <= GetLength() - length);
+            ContractSlim.Requires<ArgumentException>(sourceIndex <= values.Length - length);
 
             throw new NotImplementedException();
         }
 
         public void SetValues(IValue[] values)
         {
-            Contract.Requires<ArgumentNullException>(values != null, "values");
-            Contract.Requires<ArgumentException>(values.Length == GetLength());
+            ContractSlim.Requires<ArgumentNullException>(values != null, "values");
+            ContractSlim.Requires<ArgumentException>(values.Length == GetLength());
 #if CONTRACTS_FORALL
-            Contract.Requires<VirtualMachineMismatchException>(Contract.ForAll(values, value => value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine())));
+            ContractSlim.Requires<VirtualMachineMismatchException>(Contract.ForAll(values, value => value == null || this.GetVirtualMachine().Equals(value.GetVirtualMachine())));
 #endif
 
             throw new NotImplementedException();

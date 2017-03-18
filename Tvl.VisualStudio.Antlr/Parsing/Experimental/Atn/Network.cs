@@ -18,9 +18,9 @@
 
         public Network(NetworkBuilder builder, StateOptimizer optimizer, IEnumerable<RuleBinding> rules, Dictionary<int, RuleBinding> stateRules, Dictionary<int, RuleBinding> contextRules)
         {
-            Contract.Requires<ArgumentNullException>(builder != null, "builder");
-            Contract.Requires<ArgumentNullException>(optimizer != null, "optimizer");
-            Contract.Requires<ArgumentNullException>(rules != null, "rules");
+            ContractSlim.Requires<ArgumentNullException>(builder != null, "builder");
+            ContractSlim.Requires<ArgumentNullException>(optimizer != null, "optimizer");
+            ContractSlim.Requires<ArgumentNullException>(rules != null, "rules");
 
             _builder = builder;
             _rules = new List<RuleBinding>(rules);

@@ -22,8 +22,8 @@
 
         public ReadOnlyCollection<ILocation> GetLineLocations(string stratum, string sourceName)
         {
-            Contract.Requires<ArgumentException>(stratum == null || !string.IsNullOrEmpty(stratum));
-            Contract.Requires<ArgumentException>(sourceName == null || !string.IsNullOrEmpty(sourceName));
+            ContractSlim.Requires<ArgumentException>(stratum == null || !string.IsNullOrEmpty(stratum));
+            ContractSlim.Requires<ArgumentException>(sourceName == null || !string.IsNullOrEmpty(sourceName));
             Contract.Ensures(Contract.Result<ReadOnlyCollection<ILocation>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<ILocation>>(), location => location != null && this.GetVirtualMachine().Equals(location.GetVirtualMachine())));
@@ -123,7 +123,7 @@
 
         public ILocation GetLocationOfCodeIndex(long codeIndex)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(codeIndex >= 0);
+            ContractSlim.Requires<ArgumentOutOfRangeException>(codeIndex >= 0);
             Contract.Ensures(Contract.Result<ILocation>() == null || this.GetVirtualMachine().Equals(Contract.Result<ILocation>().GetVirtualMachine()));
 
             throw new NotImplementedException();
@@ -176,8 +176,8 @@
 
         public ReadOnlyCollection<ILocalVariable> GetVariablesByName(string name)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
             Contract.Ensures(Contract.Result<ReadOnlyCollection<ILocalVariable>>() != null);
 #if CONTRACTS_FORALL
             Contract.Ensures(Contract.ForAll(Contract.Result<ReadOnlyCollection<ILocalVariable>>(), variable => this.GetVirtualMachine().Equals(variable.GetVirtualMachine())));

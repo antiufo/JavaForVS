@@ -14,8 +14,8 @@
 
         public InterpretTraceTransition(Transition transition, NetworkInterpreter interpreter)
         {
-            Contract.Requires<ArgumentNullException>(transition != null, "transition");
-            Contract.Requires<ArgumentNullException>(interpreter != null, "interpreter");
+            ContractSlim.Requires<ArgumentNullException>(transition != null, "transition");
+            ContractSlim.Requires<ArgumentNullException>(interpreter != null, "interpreter");
 
             Transition = transition;
             Interpreter = interpreter;

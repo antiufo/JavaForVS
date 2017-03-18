@@ -9,7 +9,7 @@
     {
         public static Guid GetPortId(this IDebugPort2 port)
         {
-            Contract.Requires<ArgumentNullException>(port != null, "port");
+            ContractSlim.Requires<ArgumentNullException>(port != null, "port");
 
             Guid id;
             ErrorHandler.ThrowOnFailure(port.GetPortId(out id));
@@ -18,7 +18,7 @@
 
         public static IDebugProcess2 GetProcess(this IDebugPort2 port, AD_PROCESS_ID processId)
         {
-            Contract.Requires<ArgumentNullException>(port != null, "port");
+            ContractSlim.Requires<ArgumentNullException>(port != null, "port");
 
             IDebugProcess2 process;
             ErrorHandler.ThrowOnFailure(port.GetProcess(processId, out process));

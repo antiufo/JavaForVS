@@ -20,8 +20,8 @@
 
         public BackgroundParserErrorTagger(ITextBuffer textBuffer, IBackgroundParser backgroundParser)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(backgroundParser != null, "backgroundParser");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(backgroundParser != null, "backgroundParser");
 
             this._textBuffer = textBuffer;
             this._backgroundParser = backgroundParser;
@@ -51,7 +51,7 @@
 
         public IEnumerable<ITagSpan<IErrorTag>> GetTags(NormalizedSnapshotSpanCollection spans)
         {
-            Contract.Requires<ArgumentNullException>(spans != null, "spans");
+            ContractSlim.Requires<ArgumentNullException>(spans != null, "spans");
             Contract.Ensures(Contract.Result<IEnumerable<ITagSpan<IErrorTag>>>() != null);
 
             return _tags;

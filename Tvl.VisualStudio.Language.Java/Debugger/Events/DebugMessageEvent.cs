@@ -22,8 +22,8 @@
         public DebugMessageEvent(enum_EVENTATTRIBUTES attributes, enum_MESSAGETYPE messageType, string message, MessageBoxIcon severity, string helpFileName = null, uint helpId = 0)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(message != null, "message");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(message));
+            ContractSlim.Requires<ArgumentNullException>(message != null, "message");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(message));
 
             _messageType = messageType;
             _message = message;

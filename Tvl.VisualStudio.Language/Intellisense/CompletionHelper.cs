@@ -9,7 +9,7 @@
     {
         public static bool DoCallMatch(IntellisenseController completionTarget)
         {
-            Contract.Requires<ArgumentNullException>(completionTarget != null, "completionTarget");
+            ContractSlim.Requires<ArgumentNullException>(completionTarget != null, "completionTarget");
 
 #if true
             return false;
@@ -76,7 +76,7 @@
 
         public static void DoTriggerCompletion(IntellisenseController controller, CompletionInfoType infoType, bool signatureHelpOnly, IntellisenseInvocationType invocationType)
         {
-            Contract.Requires<ArgumentNullException>(controller != null, "controller");
+            ContractSlim.Requires<ArgumentNullException>(controller != null, "controller");
 
             var completionInfo = controller.CompletionInfo;
             ITextView textView = controller.TextView;
@@ -104,7 +104,7 @@
 
         public static bool IsCompletionPresenterActive(IntellisenseController controller, bool evenIfUsingDefaultPresenter)
         {
-            Contract.Requires<ArgumentNullException>(controller != null, "controller");
+            ContractSlim.Requires<ArgumentNullException>(controller != null, "controller");
 
             if (controller.Provider.CompletionBroker == null || controller.CompletionSession == null || controller.CompletionSession.IsDismissed)
                 return false;

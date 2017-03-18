@@ -15,7 +15,7 @@
 
         public JavaDebugExpressionContext(JavaDebugStackFrame stackFrame)
         {
-            Contract.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
+            ContractSlim.Requires<ArgumentNullException>(stackFrame != null, "stackFrame");
             _stackFrame = stackFrame;
         }
 

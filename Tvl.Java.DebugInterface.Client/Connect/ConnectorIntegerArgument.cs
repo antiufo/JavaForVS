@@ -26,8 +26,8 @@
         internal ConnectorIntegerArgument(string name, string label, string description, bool required, int value, int minimumValue, int maximumValue)
             : base(name, label, description, required)
         {
-            Contract.Requires<ArgumentException>(minimumValue <= maximumValue);
-            Contract.Requires<ArgumentException>(value >= minimumValue && value <= maximumValue);
+            ContractSlim.Requires<ArgumentException>(minimumValue <= maximumValue);
+            ContractSlim.Requires<ArgumentException>(value >= minimumValue && value <= maximumValue);
 
             _minimumValue = minimumValue;
             _maximumValue = maximumValue;

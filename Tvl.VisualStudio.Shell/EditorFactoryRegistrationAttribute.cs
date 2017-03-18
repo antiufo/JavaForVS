@@ -2,7 +2,7 @@
 {
     using System;
     using __VSEDITORTRUSTLEVEL = Microsoft.VisualStudio.Shell.Interop.__VSEDITORTRUSTLEVEL;
-    using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using CultureInfo = System.Globalization.CultureInfo;
     using LogicalView = Microsoft.VisualStudio.Shell.LogicalView;
     using ProvideViewAttribute = Microsoft.VisualStudio.Shell.ProvideViewAttribute;
@@ -19,7 +19,7 @@
 
         protected EditorFactoryRegistrationAttribute(Type factoryType, short nameResourceID)
         {
-            Contract.Requires<ArgumentNullException>(factoryType != null, "factoryType");
+            ContractSlim.Requires<ArgumentNullException>(factoryType != null, "factoryType");
 
             _factoryType = factoryType;
             _nameResourceID = nameResourceID;

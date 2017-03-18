@@ -13,8 +13,8 @@
 
         public DebugMetricAttribute(string subkey, string name)
         {
-            Contract.Requires<ArgumentNullException>(name != null, "name");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
+            ContractSlim.Requires<ArgumentNullException>(name != null, "name");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(name));
 
             if (!string.IsNullOrEmpty(subkey))
                 SubKey = subkey;

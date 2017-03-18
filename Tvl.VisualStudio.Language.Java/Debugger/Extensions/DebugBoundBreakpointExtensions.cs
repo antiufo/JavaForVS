@@ -9,7 +9,7 @@
     {
         public static enum_BP_STATE GetState(this IDebugBoundBreakpoint2 boundBreakpoint)
         {
-            Contract.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
 
             enum_BP_STATE[] state = new enum_BP_STATE[1];
             ErrorHandler.ThrowOnFailure(boundBreakpoint.GetState(state));
@@ -18,7 +18,7 @@
 
         public static uint GetHitCount(this IDebugBoundBreakpoint2 boundBreakpoint)
         {
-            Contract.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
 
             uint hitCount;
             ErrorHandler.ThrowOnFailure(boundBreakpoint.GetHitCount(out hitCount));
@@ -27,13 +27,13 @@
 
         public static void SetHitCount(this IDebugBoundBreakpoint2 boundBreakpoint, uint value)
         {
-            Contract.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
             ErrorHandler.ThrowOnFailure(boundBreakpoint.SetHitCount(value));
         }
 
         public static IDebugBreakpointResolution2 GetBreakpointResolution(this IDebugBoundBreakpoint2 boundBreakpoint)
         {
-            Contract.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(boundBreakpoint != null, "boundBreakpoint");
 
             IDebugBreakpointResolution2 resolution;
             ErrorHandler.ThrowOnFailure(boundBreakpoint.GetBreakpointResolution(out resolution));

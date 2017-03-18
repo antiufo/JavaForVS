@@ -13,7 +13,7 @@
         public StrongValueHandle(T value)
             : base(value.VirtualMachine)
         {
-            Contract.Requires<ArgumentNullException>(value != null, "value");
+            ContractSlim.Requires<ArgumentNullException>(value != null, "value");
 
             _value = value;
         }

@@ -14,7 +14,7 @@
         public DebugThreadFlagChangeEvent(enum_EVENTATTRIBUTES attributes, IDebugThread100 thread)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
             _thread = thread;
         }
 

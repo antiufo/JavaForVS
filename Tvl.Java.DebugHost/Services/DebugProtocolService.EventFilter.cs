@@ -23,7 +23,7 @@
 
             public EventFilter(EventKind internalEventKind, RequestId requestId, SuspendPolicy suspendPolicy, IEnumerable<EventRequestModifier> modifiers)
             {
-                Contract.Requires<ArgumentNullException>(modifiers != null, "modifiers");
+                ContractSlim.Requires<ArgumentNullException>(modifiers != null, "modifiers");
 
                 _internalEventKind = internalEventKind;
                 _requestId = requestId;
@@ -144,7 +144,7 @@
             public AggregateEventFilter(EventKind internalEventKind, RequestId requestId, SuspendPolicy suspendPolicy, IEnumerable<EventRequestModifier> modifiers, IEnumerable<EventFilter> filters)
                 : base(internalEventKind, requestId, suspendPolicy, modifiers)
             {
-                Contract.Requires<ArgumentNullException>(filters != null, "filters");
+                ContractSlim.Requires<ArgumentNullException>(filters != null, "filters");
                 _filters = filters.ToArray();
             }
 

@@ -2,7 +2,8 @@
 {
     using System;
     using Contract = System.Diagnostics.Contracts.Contract;
-
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
+    
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     public sealed class ProvideLinkedEditorFactoryAttribute : EditorFactoryRegistrationAttribute
     {
@@ -12,7 +13,7 @@
             : base(factoryType, nameResourceID)
         {
             Contract.Requires(factoryType != null);
-            Contract.Requires<ArgumentNullException>(linkedFactoryType != null, "linkedFactoryType");
+            ContractSlim.Requires<ArgumentNullException>(linkedFactoryType != null, "linkedFactoryType");
 
             _linkedFactoryType = linkedFactoryType;
         }

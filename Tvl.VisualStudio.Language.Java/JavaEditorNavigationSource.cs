@@ -20,9 +20,9 @@
 
         public JavaEditorNavigationSource(ITextBuffer textBuffer, IBackgroundParser backgroundParser, JavaEditorNavigationSourceProvider provider)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentNullException>(backgroundParser != null, "backgroundParser");
-            Contract.Requires<ArgumentNullException>(provider != null, "provider");
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentNullException>(backgroundParser != null, "backgroundParser");
+            ContractSlim.Requires<ArgumentNullException>(provider != null, "provider");
 
             this.TextBuffer = textBuffer;
             this.BackgroundParser = backgroundParser;

@@ -15,8 +15,8 @@
         public DebugExpressionEvaluationCompleteEvent(enum_EVENTATTRIBUTES attributes, IDebugExpression2 expression, IDebugProperty2 property)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(expression != null, "expression");
-            Contract.Requires<ArgumentNullException>(property != null, "property");
+            ContractSlim.Requires<ArgumentNullException>(expression != null, "expression");
+            ContractSlim.Requires<ArgumentNullException>(property != null, "property");
 
             _expression = expression;
             _property = property;

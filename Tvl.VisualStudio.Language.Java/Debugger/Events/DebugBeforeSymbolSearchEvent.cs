@@ -14,8 +14,8 @@
         public DebugBeforeSymbolSearchEvent(enum_EVENTATTRIBUTES attributes, string moduleName)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(moduleName != null, "moduleName");
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(moduleName));
+            ContractSlim.Requires<ArgumentNullException>(moduleName != null, "moduleName");
+            ContractSlim.Requires<ArgumentException>(!string.IsNullOrEmpty(moduleName));
 
             _moduleName = moduleName;
         }

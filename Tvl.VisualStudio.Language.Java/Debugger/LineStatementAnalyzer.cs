@@ -14,8 +14,8 @@
         [RuleDependency(typeof(JavaParser), JavaParser.RULE_compilationUnit, 0, Dependents.Ancestors)]
         public static bool TryGetLineStatements(ITextBuffer textBuffer, int lineNumber, out IList<IParseTree> statementTrees, out IList<IToken> tokens)
         {
-            Contract.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
-            Contract.Requires<ArgumentOutOfRangeException>(lineNumber >= 0);
+            ContractSlim.Requires<ArgumentNullException>(textBuffer != null, "textBuffer");
+            ContractSlim.Requires<ArgumentOutOfRangeException>(lineNumber >= 0);
 
             string text = textBuffer.CurrentSnapshot.GetText();
             return TryGetLineStatements(text, lineNumber, out statementTrees, out tokens);
@@ -24,8 +24,8 @@
         [RuleDependency(typeof(JavaParser), JavaParser.RULE_compilationUnit, 0, Dependents.Ancestors)]
         public static bool TryGetLineStatements(string text, int lineNumber, out IList<IParseTree> statementTrees, out IList<IToken> tokens)
         {
-            Contract.Requires<ArgumentNullException>(text != null, "text");
-            Contract.Requires<ArgumentOutOfRangeException>(lineNumber >= 0);
+            ContractSlim.Requires<ArgumentNullException>(text != null, "text");
+            ContractSlim.Requires<ArgumentOutOfRangeException>(lineNumber >= 0);
 
             try
             {

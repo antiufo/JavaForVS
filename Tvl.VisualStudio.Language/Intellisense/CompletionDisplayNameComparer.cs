@@ -20,7 +20,7 @@
 
         public CompletionDisplayNameComparer(StringComparer comparer)
         {
-            Contract.Requires<ArgumentNullException>(comparer != null, "comparer");
+            ContractSlim.Requires<ArgumentNullException>(comparer != null, "comparer");
 
             _comparer = comparer;
         }

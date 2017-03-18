@@ -58,7 +58,7 @@
 
         public JavaDebugProgram(IDebugProcess2 process)
         {
-            Contract.Requires<ArgumentNullException>(process != null, "process");
+            ContractSlim.Requires<ArgumentNullException>(process != null, "process");
 
             _process = process;
         }
@@ -113,8 +113,8 @@
 
         internal void InitializeDebuggerChannel(JavaDebugEngine debugEngine, IDebugEventCallback2 callback)
         {
-            Contract.Requires<ArgumentNullException>(debugEngine != null, "debugEngine");
-            Contract.Requires<ArgumentNullException>(callback != null, "callback");
+            ContractSlim.Requires<ArgumentNullException>(debugEngine != null, "debugEngine");
+            ContractSlim.Requires<ArgumentNullException>(callback != null, "callback");
 
             _debugEngine = debugEngine;
             _callback = callback;
@@ -1175,7 +1175,7 @@
 
         private static void SetEventProperties(DebugEvent debugEvent, IEventRequest request, SuspendPolicy suspendPolicy, IVirtualMachine virtualMachine, IThreadReference thread, bool manualResume)
         {
-            Contract.Requires<ArgumentNullException>(debugEvent != null, "debugEvent");
+            ContractSlim.Requires<ArgumentNullException>(debugEvent != null, "debugEvent");
             debugEvent.Properties.AddProperty(typeof(IEventRequest), request);
             debugEvent.Properties.AddProperty(typeof(SuspendPolicy), suspendPolicy);
             debugEvent.Properties.AddProperty(typeof(IVirtualMachine), virtualMachine);

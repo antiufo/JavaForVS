@@ -18,11 +18,11 @@
 
             public ArraySegment(T[] array, int offset, int count)
             {
-                Contract.Requires<ArgumentNullException>(array != null, "array");
-                Contract.Requires<ArgumentOutOfRangeException>(offset >= 0);
-                Contract.Requires<ArgumentOutOfRangeException>(count >= 0);
-                Contract.Requires<ArgumentException>(offset <= array.Length);
-                Contract.Requires<ArgumentException>(checked(offset + count) <= array.Length);
+                ContractSlim.Requires<ArgumentNullException>(array != null, "array");
+                ContractSlim.Requires<ArgumentOutOfRangeException>(offset >= 0);
+                ContractSlim.Requires<ArgumentOutOfRangeException>(count >= 0);
+                ContractSlim.Requires<ArgumentException>(offset <= array.Length);
+                ContractSlim.Requires<ArgumentException>(checked(offset + count) <= array.Length);
 
                 _array = array;
                 _offset = offset;
@@ -73,16 +73,16 @@
             {
                 get
                 {
-                    Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-                    Contract.Requires<ArgumentException>(index < Count);
+                    ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+                    ContractSlim.Requires<ArgumentException>(index < Count);
 
                     return _array[_offset + index];
                 }
 
                 set
                 {
-                    Contract.Requires<ArgumentOutOfRangeException>(index >= 0);
-                    Contract.Requires<ArgumentException>(index < Count);
+                    ContractSlim.Requires<ArgumentOutOfRangeException>(index >= 0);
+                    ContractSlim.Requires<ArgumentException>(index < Count);
 
                     _array[_offset + index] = value;
                 }

@@ -31,7 +31,7 @@
 
         internal static AttributeInfo FromMemory(IList<ConstantPoolEntry> constantPool, IntPtr ptr, int offset)
         {
-            Contract.Requires<ArgumentNullException>(constantPool != null, "constantPool");
+            ContractSlim.Requires<ArgumentNullException>(constantPool != null, "constantPool");
             Contract.Ensures(Contract.Result<AttributeInfo>() != null);
 
             ushort attributeNameIndex = ConstantPoolEntry.ByteSwap((ushort)Marshal.ReadInt16(ptr, offset));

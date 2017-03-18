@@ -17,7 +17,7 @@
 
         public EditorNavigationSourceAggregator(IEnumerable<IEditorNavigationSource> sources)
         {
-            Contract.Requires<ArgumentNullException>(sources != null, "sources");
+            ContractSlim.Requires<ArgumentNullException>(sources != null, "sources");
 
             this._sources = sources.ToArray();
 

@@ -14,7 +14,7 @@
         public DebugEngineCreateEvent(enum_EVENTATTRIBUTES attributes, IDebugEngine2 engine)
             : base(attributes)
         {
-            Contract.Requires<ArgumentNullException>(engine != null, "engine");
+            ContractSlim.Requires<ArgumentNullException>(engine != null, "engine");
             _engine = engine;
         }
 

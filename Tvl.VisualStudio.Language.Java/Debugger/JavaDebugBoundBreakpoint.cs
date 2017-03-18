@@ -21,10 +21,10 @@
 
         public JavaDebugBoundBreakpoint(IDebugPendingBreakpoint2 pendingBreakpoint, JavaDebugProgram program, IBreakpointRequest eventRequest, DebugBreakpointResolution resolution)
         {
-            Contract.Requires<ArgumentNullException>(pendingBreakpoint != null, "pendingBreakpoint");
-            Contract.Requires<ArgumentNullException>(program != null, "program");
-            Contract.Requires<ArgumentNullException>(eventRequest != null, "eventRequest");
-            Contract.Requires<ArgumentNullException>(resolution != null, "resolution");
+            ContractSlim.Requires<ArgumentNullException>(pendingBreakpoint != null, "pendingBreakpoint");
+            ContractSlim.Requires<ArgumentNullException>(program != null, "program");
+            ContractSlim.Requires<ArgumentNullException>(eventRequest != null, "eventRequest");
+            ContractSlim.Requires<ArgumentNullException>(resolution != null, "resolution");
 
             _pendingBreakpoint = pendingBreakpoint;
             _program = program;

@@ -10,7 +10,7 @@
 
         public LocalThreadReferenceHolder(JniEnvironment nativeEnvironment, jthread reference)
         {
-            Contract.Requires<ArgumentNullException>(nativeEnvironment != null, "nativeEnvironment");
+            ContractSlim.Requires<ArgumentNullException>(nativeEnvironment != null, "nativeEnvironment");
 
             _nativeEnvironment = nativeEnvironment;
             _reference = (jthread)_nativeEnvironment.NewLocalReference(reference);

@@ -32,7 +32,7 @@
 
         public int GetLineNumber(string stratum)
         {
-            Contract.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
+            ContractSlim.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
             Contract.Ensures(Contract.Result<int>() >= -1);
 
             throw new NotImplementedException();
@@ -55,7 +55,7 @@
 
         public string GetSourceName(string stratum)
         {
-            Contract.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
+            ContractSlim.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
             Contract.Ensures(!string.IsNullOrEmpty(Contract.Result<string>()));
 
             throw new NotImplementedException();
@@ -70,7 +70,7 @@
 
         public string GetSourcePath(string stratum)
         {
-            Contract.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
+            ContractSlim.Requires<ArgumentException>(stratum == null || stratum.Length > 0);
             Contract.Ensures(!string.IsNullOrEmpty(Contract.Result<string>()));
 
             throw new NotImplementedException();

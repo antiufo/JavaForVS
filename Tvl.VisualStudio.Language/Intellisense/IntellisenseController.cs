@@ -32,8 +32,8 @@
 
         public IntellisenseController(ITextView textView, IntellisenseControllerProvider provider)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
-            Contract.Requires<ArgumentNullException>(provider != null, "provider");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(provider != null, "provider");
 
             _provider = provider;
             _completionInfo = new Lazy<CompletionInfo>(CreateCompletionInfo);
@@ -478,7 +478,7 @@
 
         public virtual void OnVsTextViewCreated(IVsTextView textViewAdapter)
         {
-            Contract.Requires<ArgumentNullException>(textViewAdapter != null, "textViewAdapter");
+            ContractSlim.Requires<ArgumentNullException>(textViewAdapter != null, "textViewAdapter");
 
             _commandFilter = CreateIntellisenseCommandFilter(textViewAdapter);
             if (_commandFilter != null)
@@ -502,7 +502,7 @@
 
         protected virtual void Attach(ITextView textView)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
 
             if (_textView != null)
                 throw new InvalidOperationException();
@@ -513,7 +513,7 @@
 
         protected virtual void Detach(ITextView textView)
         {
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
 
             DismissAll();
 
@@ -529,12 +529,12 @@
 
         protected virtual void ConnectSubjectBuffer(ITextBuffer subjectBuffer)
         {
-            Contract.Requires<ArgumentNullException>(subjectBuffer != null, "subjectBuffer");
+            ContractSlim.Requires<ArgumentNullException>(subjectBuffer != null, "subjectBuffer");
         }
 
         protected virtual void DisconnectSubjectBuffer(ITextBuffer subjectBuffer)
         {
-            Contract.Requires<ArgumentNullException>(subjectBuffer != null, "subjectBuffer");
+            ContractSlim.Requires<ArgumentNullException>(subjectBuffer != null, "subjectBuffer");
         }
 
         protected virtual CompletionInfo CreateCompletionInfo()
@@ -546,7 +546,7 @@
 
         protected virtual IntellisenseCommandFilter CreateIntellisenseCommandFilter(IVsTextView textViewAdapter)
         {
-            Contract.Requires<ArgumentNullException>(textViewAdapter != null, "textViewAdapter");
+            ContractSlim.Requires<ArgumentNullException>(textViewAdapter != null, "textViewAdapter");
             Contract.Ensures(Contract.Result<IntellisenseCommandFilter>() != null);
 
             return new IntellisenseCommandFilter(textViewAdapter, this);

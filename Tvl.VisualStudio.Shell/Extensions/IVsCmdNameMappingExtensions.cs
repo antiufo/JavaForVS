@@ -11,7 +11,7 @@
     {
         public static IEnumerable<string> GetMacroNames(this IVsCmdNameMapping commandNameMapping)
         {
-            Contract.Requires<ArgumentNullException>(commandNameMapping != null, "commandNameMapping");
+            ContractSlim.Requires<ArgumentNullException>(commandNameMapping != null, "commandNameMapping");
             Contract.Ensures(Contract.Result<IEnumerable<string>>() != null);
 
             IEnumString enumString;
@@ -34,7 +34,7 @@
 
         public static IEnumerable<string> GetCommandNames(this IVsCmdNameMapping commandNameMapping)
         {
-            Contract.Requires<ArgumentNullException>(commandNameMapping != null, "commandNameMapping");
+            ContractSlim.Requires<ArgumentNullException>(commandNameMapping != null, "commandNameMapping");
             Contract.Ensures(Contract.Result<IEnumerable<string>>() != null);
 
             IEnumString enumString;

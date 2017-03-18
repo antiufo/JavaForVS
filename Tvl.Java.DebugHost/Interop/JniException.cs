@@ -10,7 +10,7 @@
 
         public JniException(JniEnvironment nativeEnvironment, jthrowable throwable)
         {
-            Contract.Requires<ArgumentNullException>(nativeEnvironment != null, "nativeEnvironment");
+            ContractSlim.Requires<ArgumentNullException>(nativeEnvironment != null, "nativeEnvironment");
         }
     }
 }

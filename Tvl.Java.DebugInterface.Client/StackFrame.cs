@@ -17,8 +17,8 @@
             : base(virtualMachine)
         {
             Contract.Requires(virtualMachine != null);
-            Contract.Requires<ArgumentNullException>(thread != null, "thread");
-            Contract.Requires<ArgumentNullException>(location != null, "location");
+            ContractSlim.Requires<ArgumentNullException>(thread != null, "thread");
+            ContractSlim.Requires<ArgumentNullException>(location != null, "location");
 
             _thread = thread;
             _frameId = frameId;

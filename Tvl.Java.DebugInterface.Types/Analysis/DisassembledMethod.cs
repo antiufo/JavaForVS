@@ -12,8 +12,8 @@
 
         public DisassembledMethod(IList<JavaInstruction> instructions, IList<SwitchData> switchData)
         {
-            Contract.Requires<ArgumentNullException>(instructions != null, "instructions");
-            Contract.Requires<ArgumentNullException>(switchData != null, "switchData");
+            ContractSlim.Requires<ArgumentNullException>(instructions != null, "instructions");
+            ContractSlim.Requires<ArgumentNullException>(switchData != null, "switchData");
 
             _instructions = new ImmutableList<JavaInstruction>(instructions);
             _switchData = new ImmutableList<SwitchData>(switchData);

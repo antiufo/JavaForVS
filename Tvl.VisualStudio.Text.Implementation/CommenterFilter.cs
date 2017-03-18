@@ -16,8 +16,8 @@
             : base(textViewAdapter)
         {
             Contract.Requires(textViewAdapter != null);
-            Contract.Requires<ArgumentNullException>(textView != null, "textView");
-            Contract.Requires<ArgumentNullException>(commenter != null, "commenter");
+            ContractSlim.Requires<ArgumentNullException>(textView != null, "textView");
+            ContractSlim.Requires<ArgumentNullException>(commenter != null, "commenter");
 
             this.TextView = textView;
             this.Commenter = commenter;

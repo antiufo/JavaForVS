@@ -1,7 +1,7 @@
 ﻿namespace Tvl.VisualStudio.Shell
 {
     using System;
-    using Contract = System.Diagnostics.Contracts.Contract;
+    using ContractSlim = System.Diagnostics.Contracts.ContractSlim;
     using enum_EXCEPTION_STATE = Microsoft.VisualStudio.Debugger.Interop.enum_EXCEPTION_STATE;
     using RegistrationAttribute = Microsoft.VisualStudio.Shell.RegistrationAttribute;
 
@@ -15,8 +15,8 @@
 
         public ProvideDebuggerExceptionKindAttribute(string debugEngineGuid, string exceptionKind)
         {
-            Contract.Requires<ArgumentNullException>(debugEngineGuid != null, "debugEngineGuid");
-            Contract.Requires<ArgumentNullException>(exceptionKind != null, "exceptionKind");
+            ContractSlim.Requires<ArgumentNullException>(debugEngineGuid != null, "debugEngineGuid");
+            ContractSlim.Requires<ArgumentNullException>(exceptionKind != null, "exceptionKind");
 
             _debugEngine = Guid.Parse(debugEngineGuid);
             _exceptionKind = exceptionKind;
